@@ -28,7 +28,13 @@ jobs:
         run: npm install
         
       - name: Build
-        run: npm run build
+        env:
+          BASE_URL: /presentation/
+        run: |
+          npm run build
+          # Fix asset paths in index.html
+          sed -i 's|src="/assets/|src="/presentation/assets/|g' dist/index.html
+          sed -i 's|href="/assets/|href="/presentation/assets/|g' dist/index.html
         
       - name: List dist contents
         run: |

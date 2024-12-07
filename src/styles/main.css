@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900;
+  }
+
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+}
+
+@layer components {
+  .slide-container {
+    @apply min-h-screen p-8 transition-all duration-500 ease-in-out relative;
+  }
+
+  .slide-content {
+    @apply max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-8;
+  }
+
+  .nav-button {
+    @apply px-6 py-2 rounded-lg font-medium transition-all duration-200
+    disabled:opacity-50 disabled:cursor-not-allowed
+    bg-indigo-600 text-white hover:bg-indigo-700
+    focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md p-6 transition-all duration-200 hover:shadow-lg;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-800 text-white;
+  }
+}
+
+/* Additional utility classes */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}

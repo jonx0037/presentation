@@ -24,7 +24,7 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, trend = null, subtitl
     {subtitle && <p className="text-sm text-slate-500 mt-1">{subtitle}</p>}
     {citation && (
       <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
-        Source: <span className="citation-hover" data-citation={citation}>citation</span>
+        Source: <span className="citation-hover" data-citation={citation}>{citation}</span>
       </div>
     )}
   </div>
@@ -94,7 +94,7 @@ const StatisticsDisplay: React.FC = () => {
                   </div>
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
-                  Source: <span className="citation-hover" data-citation="Twitter. &quot;Q4 2022 Transparency Report.&quot; Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.">Twitter/X Transparency Reports</span>
+                  Source: <span className="citation-hover" data-citation="Twitter. &quot;Q4 2022 Transparency Report.&quot; Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.">Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, 2022</span>
                 </div>
               </div>
               

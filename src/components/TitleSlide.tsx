@@ -24,7 +24,7 @@ const TitleSlide = () => {
         <div className="mt-16 space-y-2">
           <p className="text-xl text-blue-100 font-medium">Jonathan Aaron Rocha</p>
           <p className="text-lg text-blue-200">ENGL 5374 - Research Methods in Graduate Studies</p>
-          <p className="text-lg text-blue-200">jr159@my.tamuct.edu</p>
+            <a href="mailto:jr159@my.tamuct.edu" className="text-lg text-blue-200 hover:text-blue-300 transition-colors">jr159@my.tamuct.edu</a>
         </div>
 
       </div>

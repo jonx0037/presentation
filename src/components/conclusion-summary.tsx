@@ -82,7 +82,7 @@ const ConclusionDisplay: React.FC = () => {
         {/* Citation */}
         <div className="mt-8 text-center text-slate-500 text-sm">
           <p>Jonathan Aaron Rocha</p>
-          <p>jr159@my.tamuct.edu</p>
+            <p><a href="mailto:jr159@my.tamuct.edu" className="hover:text-indigo-600 transition-colors">jr159@my.tamuct.edu</a></p>
           <p>ENGL 5374 - Research Methods in Graduate Studies</p>
         </div>
 

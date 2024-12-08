@@ -126,8 +126,8 @@ const Citations: FC = () => {
   };
 
   return (
-    <div className="slide-container min-h-screen bg-gradient-to-b from-slate-50 to-white p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="slide-container h-screen flex flex-col bg-gradient-to-b from-slate-50 to-white">
+      <div className="max-w-6xl mx-auto w-full px-8 pt-8 pb-4">
         <h2 className="text-3xl font-bold text-center text-indigo-900 mb-8">
           Works Cited
         </h2>
@@ -148,60 +148,64 @@ const Citations: FC = () => {
             </button>
           ))}
         </div>
+      </div>
 
-        {/* Citations Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredCitations.map((citation, index) => (
-            <div
-              key={index}
-              className="citation p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100"
-            >
-              <div className="flex items-start gap-4">
-                <div className="flex-grow">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      {
-                        book: 'bg-blue-100 text-blue-700',
-                        article: 'bg-green-100 text-green-700',
-                        report: 'bg-yellow-100 text-yellow-700',
-                        document: 'bg-purple-100 text-purple-700'
-                      }[citation.type]
-                    }`}>
-                      {citation.type}
-                    </span>
-                  </div>
-                  <p className="text-slate-700">
-                    {citation.citation}
-                  </p>
-                  {citation.document && (
-                    <div className="mt-4">
-                      <a
-                        href={citation.document}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200 text-sm group"
-                      >
-                        <svg 
-                          className="w-4 h-4 mr-2 group-hover:animate-bounce" 
-                          fill="none" 
-                          stroke="currentColor" 
-                          viewBox="0 0 24 24"
-                        >
-                          <path 
-                            strokeLinecap="round" 
-                            strokeLinejoin="round" 
-                            strokeWidth={2} 
-                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
-                          />
-                        </svg>
-                        View Document
-                      </a>
+      {/* Scrollable Citations Container */}
+      <div className="flex-1 overflow-auto px-8 pb-8">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {filteredCitations.map((citation, index) => (
+              <div
+                key={index}
+                className="citation p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100"
+              >
+                <div className="flex items-start gap-4">
+                  <div className="flex-grow">
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-2 py-1 text-xs rounded-full ${
+                        {
+                          book: 'bg-blue-100 text-blue-700',
+                          article: 'bg-green-100 text-green-700',
+                          report: 'bg-yellow-100 text-yellow-700',
+                          document: 'bg-purple-100 text-purple-700'
+                        }[citation.type]
+                      }`}>
+                        {citation.type}
+                      </span>
                     </div>
-                  )}
+                    <p className="text-slate-700">
+                      {citation.citation}
+                    </p>
+                    {citation.document && (
+                      <div className="mt-4">
+                        <a
+                          href={citation.document}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200 text-sm group"
+                        >
+                          <svg 
+                            className="w-4 h-4 mr-2 group-hover:animate-bounce" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              strokeWidth={2} 
+                              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                            />
+                          </svg>
+                          View Document
+                        </a>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>

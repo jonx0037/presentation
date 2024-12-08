@@ -99,14 +99,28 @@ const ImpactChart: React.FC = () => {
             <div key={index} className="card hover:shadow-lg transition-all duration-300">
               <h3 className="font-medium text-slate-900 mb-2">
                 {item.name} 
-                {item.name === 'Moderation Staff' && <sup><a href="#reuters">[1]</a></sup>}
+                {item.name === 'Moderation Staff' && 
+                  <sup className="citation-ref group relative cursor-pointer">
+                    <span className="text-blue-600">[1]</span>
+                    <span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -top-16 left-0 bg-white p-3 rounded shadow-lg text-sm w-64 z-50">
+                      [1]Reuters. "Content Moderation Staff Reduction under Musk." Reuters, December 12, 2023.
+                    </span>
+                  </sup>
+                }
               </h3>
               <p className="text-3xl font-bold mb-2">
                 {item.label.split(' ')[0]}
               </p>
               <p className="text-sm text-slate-600">
                 {item.label.split(' ')[1]}
-                {(item.name === 'Issue Reports' || item.name === 'Appeal Success') && <sup><a href="#twitter-transparency">[2]</a></sup>}
+                {(item.name === 'Issue Reports' || item.name === 'Appeal Success') && 
+                  <sup className="citation-ref group relative cursor-pointer">
+                    <span className="text-blue-600">[2]</span>
+                    <span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -top-16 left-0 bg-white p-3 rounded shadow-lg text-sm w-64 z-50">
+                      [2]Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, December 31, 2022.
+                    </span>
+                  </sup>
+                }
               </p>
             </div>
           ))}
@@ -116,7 +130,13 @@ const ImpactChart: React.FC = () => {
         <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl border border-indigo-100">
           <p className="text-center text-indigo-900 font-medium">
             The data reveals a clear shift in platform governance, marked by reduced human oversight
-            and increased reliance on automated systems, leading to significant changes in moderation outcomes. <sup><a href="#wang">[3]</a></sup>
+            and increased reliance on automated systems, leading to significant changes in moderation outcomes.
+            <sup className="citation-ref group relative cursor-pointer">
+              <span className="text-blue-600">[3]</span>
+              <span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -top-16 left-0 bg-white p-3 rounded shadow-lg text-sm w-64 z-50">
+                [3]Wang, Rui, et al. "Empowered or Constrained in Platform Governance?" Social Media + Society, March 15, 2024.
+              </span>
+            </sup>
           </p>
         </div>
       </div>

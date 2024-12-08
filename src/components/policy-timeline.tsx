@@ -5,6 +5,7 @@ interface PolicyChange {
   title: string;
   description: string;
   impact: string;
+  document?: string;
 }
 
 const PolicyTimeline: React.FC = () => {
@@ -15,7 +16,8 @@ const PolicyTimeline: React.FC = () => {
       date: "August 19, 2021",
       title: "Twitter Terms of Service",
       description: "The terms governing the Twitter platform prior to X's acquisition",
-      impact: "Defined the rules and policies for Twitter users. See the full terms at <a href='https://help.twitter.com/en/rules-and-policies/' target='_blank' rel='noopener noreferrer' className='text-indigo-600 underline'>help.twitter.com/en/rules-and-policies/</a>"
+      impact: "Defined the rules and policies for Twitter users",
+      document: "/src/assets/files/Twitter_User_Agreement_EN2021.pdf"
     },
     {
       date: "January 2023",
@@ -51,7 +53,8 @@ const PolicyTimeline: React.FC = () => {
       date: "Q3 2024",
       title: "Updated X Terms of Service",
       description: "The new terms governing the platform under X's ownership",
-      impact: "Decreased public transparency and accountability"
+      impact: "Decreased public transparency and accountability",
+      document: "/src/assets/files/x-terms-of-service-2024-11-15.pdf"
     }
   ];
 
@@ -108,10 +111,37 @@ const PolicyTimeline: React.FC = () => {
             </div>
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-slate-700">Impact</h4>
-              <p className="text-slate-600 bg-indigo-50 p-4 rounded-lg" dangerouslySetInnerHTML={{ __html: policies[activePolicy].impact }}>
+              <p className="text-slate-600 bg-indigo-50 p-4 rounded-lg">
+                {policies[activePolicy].impact}
               </p>
             </div>
           </div>
+
+          {policies[activePolicy].document && (
+            <div className="mt-6 flex justify-center">
+              <a
+                href={policies[activePolicy].document}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
+              >
+                <svg 
+                  className="w-5 h-5 mr-2 group-hover:animate-bounce" 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path 
+                    strokeLinecap="round" 
+                    strokeLinejoin="round" 
+                    strokeWidth={2} 
+                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                  />
+                </svg>
+                View Full Document
+              </a>
+            </div>
+          )}
         </div>
 
         <div className="mt-8 bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-100">

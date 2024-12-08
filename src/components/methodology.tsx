@@ -1,4 +1,22 @@
-import React from 'react'
+import React from 'react';
+
+interface MethodCardProps {
+  title: string;
+  children: React.ReactNode;
+  citation?: string;
+}
+
+const MethodCard: React.FC<MethodCardProps> = ({ title, children, citation }) => (
+  <div className="bg-white rounded-lg p-6 shadow-lg border border-slate-100 relative group">
+    <h3 className="text-xl font-semibold mb-4 text-indigo-500">{title}</h3>
+    {children}
+    {citation && (
+      <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
+        Source: {citation}
+      </div>
+    )}
+  </div>
+);
 
 const Methodology = () => {
   return (
@@ -9,58 +27,73 @@ const Methodology = () => {
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-white rounded-lg p-6 shadow-lg border border-slate-100">
-            <h3 className="text-xl font-semibold mb-4 text-indigo-500">Data Collection</h3>
+          <MethodCard 
+            title="Critical Discourse Analysis" 
+            citation="Fairclough, 1995"
+          >
             <ul className="space-y-3 list-disc list-inside">
-              <li>Platform policy documentation analysis</li>
-              <li>Public statements and announcements</li>
-              <li>User engagement metrics</li>
-              <li>Content moderation reports</li>
-              <li>Third-party platform analysis</li>
+              <li>Text analysis of policy documents</li>
+              <li>Discursive practice examination</li>
+              <li>Social practice context</li>
+              <li>Power relationship analysis</li>
             </ul>
-          </div>
+          </MethodCard>
 
-          <div className="bg-white rounded-lg p-6 shadow-lg border border-slate-100">
-            <h3 className="text-xl font-semibold mb-4 text-indigo-500">Analysis Framework</h3>
+          <MethodCard 
+            title="Primary Data Sources"
+            citation="Gillespie, 2018"
+          >
             <ul className="space-y-3 list-disc list-inside">
-              <li>Comparative analysis (pre/post acquisition)</li>
-              <li>Policy impact assessment</li>
-              <li>Stakeholder analysis</li>
+              <li>Platform policy documentation</li>
+              <li>Official communications</li>
+              <li>Transparency reports</li>
+              <li>Public statements</li>
+            </ul>
+          </MethodCard>
+
+          <MethodCard 
+            title="Analysis Framework"
+            citation="Klonick, 2018"
+          >
+            <ul className="space-y-3 list-disc list-inside">
               <li>Governance structure evaluation</li>
+              <li>Policy impact assessment</li>
+              <li>Comparative analysis</li>
+              <li>Stakeholder analysis</li>
             </ul>
-          </div>
+          </MethodCard>
 
-          <div className="bg-white rounded-lg p-6 shadow-lg border border-slate-100">
-            <h3 className="text-xl font-semibold mb-4 text-indigo-500">Time Period</h3>
-            <p>
-              Primary analysis period: October 2022 - Present
-              <br />
-              Comparative baseline: January 2022 - October 2022
-            </p>
-          </div>
-
-          <div className="bg-white rounded-lg p-6 shadow-lg border border-slate-100">
-            <h3 className="text-xl font-semibold mb-4 text-indigo-500">Research Approach</h3>
-            <ul className="space-y-3 list-disc list-inside">
-              <li>Mixed-methods analysis</li>
-              <li>Quantitative metrics evaluation</li>
-              <li>Qualitative policy analysis</li>
-              <li>Case study examination</li>
+          <MethodCard 
+            title="Research Scope"
+            citation="Wang et al., 2024"
+          >
+            <p className="mb-2">Analysis Period:</p>
+            <ul className="space-y-2 list-disc list-inside">
+              <li>Pre-acquisition baseline: 2021-2022</li>
+              <li>Post-acquisition analysis: 2022-2024</li>
             </ul>
+          </MethodCard>
+        </div>
+
+        <div className="bg-indigo-50 rounded-lg p-6 mt-6 relative group">
+          <h3 className="text-xl font-semibold mb-4 text-indigo-500">Methodological Limitations</h3>
+          <ul className="space-y-2 list-disc list-inside">
+            <li>Limited access to algorithmic decision-making processes</li>
+            <li>Opacity of internal moderation guidelines</li>
+            <li>Restricted access to user engagement metrics</li>
+            <li>Rapidly evolving platform changes</li>
+          </ul>
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
+            Limitations framework adapted from Roberts (2019) and Noble (2018)
           </div>
         </div>
 
-        <div className="bg-indigo-50 rounded-lg p-6 mt-6">
-          <h3 className="text-xl font-semibold mb-4 text-indigo-500">Limitations</h3>
-          <ul className="space-y-2 list-disc list-inside">
-            <li>Data accessibility constraints</li>
-            <li>Rapidly evolving platform changes</li>
-            <li>Limited internal documentation access</li>
-          </ul>
+        <div className="text-sm text-center text-slate-500 mt-8">
+          Hover over sections to view citations
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Methodology
+export default Methodology;

@@ -10,6 +10,7 @@ import ImpactAnalysis from './components/impact-analysis'
 import KeyStatistics from './components/key-statistics'
 import ResearchAreas from './components/research-areas'
 import ConclusionSummary from './components/conclusion-summary'
+import Citations from './components/Citations'
 
 // Import Tailwind CSS
 import './styles/main.css'
@@ -28,7 +29,8 @@ const App = () => {
     { component: <KeyStatistics />, title: 'Key Statistics' },
     { component: <ImpactAnalysis />, title: 'Impact Analysis' },
     { component: <ResearchAreas />, title: 'Future Research' },
-    { component: <ConclusionSummary />, title: 'Conclusion' }
+    { component: <ConclusionSummary />, title: 'Conclusion' },
+    { component: <Citations />, title: 'Works Cited' }
   ]
 
   const nextSlide = () => {

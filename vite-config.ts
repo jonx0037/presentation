@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 import { resolve } from 'path'
 
 export default defineConfig({
-  base: '/presentation/',
+  base: process.env.NODE_ENV === 'production' ? '/presentation/' : '/',
   plugins: [
     react({
       babel: {

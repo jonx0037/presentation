@@ -34,16 +34,22 @@ const App = () => {
   ]
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev < slides.length - 1 ? prev + 1 : prev))
+    if (currentSlide < slides.length - 1) {
+      setCurrentSlide(currentSlide + 1)
+    }
   }
 
   const previousSlide = () => {
-    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev))
+    if (currentSlide > 0) {
+      setCurrentSlide(currentSlide - 1)
+    }
   }
 
   const goToSlide = (index: number) => {
-    setCurrentSlide(index)
-    setMenuOpen(false)
+    if (index >= 0 && index < slides.length) {
+      setCurrentSlide(index)
+      setMenuOpen(false)
+    }
   }
 
   // Handle keyboard navigation
@@ -60,7 +66,7 @@ const App = () => {
 
     window.addEventListener('keydown', handleKeyPress)
     return () => window.removeEventListener('keydown', handleKeyPress)
-  }, [])
+  }, [currentSlide]) // Add currentSlide as dependency
 
   return (
     <div className="min-h-screen bg-slate-50 relative overflow-hidden">
@@ -82,15 +88,15 @@ const App = () => {
 
       {/* Slide menu */}
       {menuOpen && (
-        <div className="absolute inset-0 bg-black/50 z-40 backdrop-blur-sm">
-          <div className="absolute left-0 top-0 h-full w-64 bg-white shadow-lg p-4">
+        <div className="fixed inset-0 bg-black/50 z-40 backdrop-blur-sm">
+          <div className="absolute left-0 top-0 h-full w-64 bg-white shadow-lg p-4 overflow-y-auto">
             <h3 className="text-lg font-semibold mb-4 text-indigo-600">Slides</h3>
             <ul className="space-y-2">
               {slides.map((slide, index) => (
                 <li key={index}>
                   <button
                     onClick={() => goToSlide(index)}
-                    className={`w-full text-left px-3 py-2 rounded ${
+                    className={`w-full text-left px-3 py-2 rounded transition-colors duration-200 ${
                       currentSlide === index
                         ? 'bg-indigo-100 text-indigo-700'
                         : 'hover:bg-slate-100'
@@ -132,19 +138,24 @@ const App = () => {
 
       {/* Slides container */}
       <div className="w-full min-h-screen">
-        <div 
-          className="flex transition-transform duration-500 ease-in-out"
-          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-        >
-          {slides.map((slide, index) => (
-            <div 
-              key={index}
-              className="min-w-full min-h-screen flex-shrink-0"
-            >
-              {slide.component}
-            </div>
-          ))}
-        </div>
+        {slides.map((slide, index) => (
+          <div 
+            key={index}
+            className={`absolute top-0 left-0 w-full min-h-screen transition-all duration-500 transform ${
+              index === currentSlide 
+                ? 'translate-x-0 opacity-100' 
+                : index < currentSlide 
+                  ? '-translate-x-full opacity-0' 
+                  : 'translate-x-full opacity-0'
+            }`}
+            style={{ 
+              pointerEvents: index === currentSlide ? 'auto' : 'none',
+              visibility: Math.abs(index - currentSlide) > 1 ? 'hidden' : 'visible'
+            }}
+          >
+            {slide.component}
+          </div>
+        ))}
       </div>
     </div>
   )

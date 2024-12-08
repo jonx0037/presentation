@@ -40,6 +40,35 @@
     @apply bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-800 text-white;
   }
 
+  /* Citation styles */
+  .citation-ref {
+    @apply inline-block ml-0.5 text-xs font-medium cursor-help;
+  }
+
+  .citation-popup {
+    @apply absolute -top-16 left-0 bg-white p-4 rounded-lg shadow-xl 
+    border border-gray-200 text-sm w-72 z-50
+    transform -translate-x-1/2 left-1/2
+    backdrop-filter backdrop-blur-sm bg-opacity-95;
+  }
+
+  .citation-ref:hover .citation-popup {
+    @apply opacity-100;
+  }
+
+  .references-section {
+    @apply mt-8 pt-6 border-t-2 border-gray-100 
+    grid grid-cols-2 gap-6 text-sm text-gray-600;
+  }
+
+  .reference-item {
+    @apply mb-3 leading-relaxed hover:bg-gray-50 p-2 rounded-lg transition-colors duration-200;
+  }
+
+  .reference-number {
+    @apply text-blue-600 font-medium mr-2;
+  }
+
   /* Menu styles */
   .slide-menu {
     @apply fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50;
@@ -224,5 +253,21 @@
   .statistic-card {
     box-shadow: none;
     border: 1px solid #e2e8f0;
+  }
+
+  /* Print-specific citation styles */
+  .citation-popup {
+    display: none !important;
+  }
+
+  .references-section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    border-top: 2px solid #e2e8f0;
+  }
+
+  .reference-item {
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 }

@@ -9,7 +9,7 @@ interface StatCardProps {
 }
 
 const StatCard: React.FC<StatCardProps> = ({ title, value, trend = null, subtitle = null, citation = null }) => (
-  <div className="statistic-card">
+  <div className="card bg-white rounded-lg shadow-sm hover:bg-gradient-to-r hover:from-indigo-50 hover:to-white relative group mb-4">
     <h4 className="text-lg font-medium text-slate-600 mb-2">{title}</h4>
     <div className="flex items-baseline space-x-2">
       <span className={`text-3xl font-bold ${trend === 'negative' ? 'text-rose-600' : trend === 'positive' ? 'text-emerald-600' : 'text-slate-900'}`}>
@@ -32,9 +32,9 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, trend = null, subtitl
 
 const StatisticsDisplay: React.FC = () => {
   return (
-    <div className="slide-container">
-      <div className="slide-content">
-        <h2 className="section-header">
+    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto sm:min-h-[100dvh]">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-2xl font-bold text-center text-indigo-900 mb-8 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
           Key Platform Governance Metrics
         </h2>
 
@@ -75,7 +75,7 @@ const StatisticsDisplay: React.FC = () => {
               User Impact Analysis
             </h3>
             <div className="grid gap-6">
-              <div className="statistic-card">
+              <div className="card hover:shadow-xl transition-all duration-300 relative group">
                 <h4 className="text-lg font-medium text-slate-600 mb-4">Content Appeals Comparison</h4>
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">

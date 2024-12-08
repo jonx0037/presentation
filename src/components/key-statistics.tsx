@@ -50,21 +50,21 @@ const StatisticsDisplay: React.FC = () => {
                 value="71%"
                 trend="negative"
                 subtitle="Reduction in human oversight"
-                citation="Reuters, December 2023"
+                citation="Reuters. &quot;Content Moderation Staff Reduction under Musk.&quot; Reuters, December 12, 2023, www.reuters.com/tech."
               />
               <StatCard
                 title="User Issue Reports"
                 value="54%"
                 trend="negative"
                 subtitle="Increase in reported problems"
-                citation="Reuters, December 2023"
+                citation="Reuters. &quot;Content Moderation Staff Reduction under Musk.&quot; Reuters, December 12, 2023, www.reuters.com/tech."
               />
               <StatCard
                 title="Appeal Success Rate"
                 value="48%"
                 trend="negative"
                 subtitle="Decrease in successful appeals"
-                citation="Twitter Q4 2022 vs X Q2 2023 Reports"
+                citation="Twitter. &quot;Q4 2022 Transparency Report.&quot; Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4."
               />
             </div>
           </div>

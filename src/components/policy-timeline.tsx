@@ -65,17 +65,17 @@ const PolicyTimeline: React.FC = () => {
   ];
 
   return (
-    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-2xl font-bold text-center text-indigo-900 mb-8 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
+    <div className="slide-container">
+      <div className="slide-content">
+        <h2 className="section-header">
           Platform Policy Evolution Timeline
         </h2>
 
         {/* Timeline Navigation */}
         <div className="relative mb-8">
-          <div className="absolute left-0 right-0 h-1 bg-indigo-100 top-1/2 transform -translate-y-1/2">
+          <div className="timeline-line">
             <div 
-              className="h-full bg-indigo-600 transition-all duration-500"
+              className="timeline-progress"
               style={{ width: `${((activePolicy + 1) / policies.length) * 100}%` }}
             />
           </div>
@@ -84,10 +84,8 @@ const PolicyTimeline: React.FC = () => {
             {policies.map((policy, index) => (
               <button
                 key={index}
-                className={`w-8 h-8 rounded-full flex items-center justify-center transition-all duration-300 ${
-                  index <= activePolicy
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-white border-2 border-indigo-200 text-indigo-400'
+                className={`timeline-node ${
+                  index <= activePolicy ? 'timeline-node-active' : 'timeline-node-inactive'
                 }`}
                 onClick={() => setActivePolicy(index)}
               >
@@ -98,7 +96,7 @@ const PolicyTimeline: React.FC = () => {
         </div>
 
         {/* Policy Details */}
-        <div className="bg-white rounded-xl shadow-lg p-8 transition-all duration-500">
+        <div className="research-card">
           <div className="flex items-center justify-between mb-6">
             <span className="text-sm font-medium text-indigo-500">
               {policies[activePolicy].date}

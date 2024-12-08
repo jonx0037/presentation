@@ -19,18 +19,36 @@ const ComparisonTable = () => {
             </div>
             
             <ul className="space-y-4 mb-8">
-              {[
-                'Transparent moderation <sup className="citation-ref group relative cursor-pointer"><span className="text-blue-600">[1]</span><span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -bottom-24 left-0 bg-white p-4 rounded-lg shadow-xl text-sm w-72 z-50 border border-blue-100">[1]Klonick, Kate. "The New Governors: The People, Rules, and Processes Governing Online Speech." Harvard Law Review, December 15, 2018.</span></sup>',
-                'Clear appeal process <sup className="citation-ref group relative cursor-pointer"><span className="text-blue-600">[2]</span><span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -bottom-24 left-0 bg-white p-4 rounded-lg shadow-xl text-sm w-72 z-50 border border-blue-100">[2]Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, December 31, 2022.</span></sup>',
-                'Human oversight',
-                'Regular reports',
-                'Community standards'
-              ].map((item, index) => (
-                <li key={index} className="flex items-center text-slate-700">
-                  <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  <span dangerouslySetInnerHTML={{ __html: item }}></span>
-                </li>
-              ))}
+              <li className="flex items-start text-slate-700">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
+                <div>
+                  <span>Transparent moderation</span>
+                  <div className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                    [1]Klonick, Kate. "The New Governors: The People, Rules, and Processes Governing Online Speech." Harvard Law Review, December 15, 2018.
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-start text-slate-700">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3 mt-2"></span>
+                <div>
+                  <span>Clear appeal process</span>
+                  <div className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                    [2]Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, December 31, 2022.
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-center text-slate-700">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                <span>Human oversight</span>
+              </li>
+              <li className="flex items-center text-slate-700">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                <span>Regular reports</span>
+              </li>
+              <li className="flex items-center text-slate-700">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                <span>Community standards</span>
+              </li>
             </ul>
 
             <div className="bg-blue-100 rounded-lg p-4 space-y-2">
@@ -53,18 +71,41 @@ const ComparisonTable = () => {
             </div>
             
             <ul className="space-y-4 mb-8">
-              {[
-                'Algorithmic filtering <sup className="citation-ref group relative cursor-pointer"><span className="text-blue-600">[3]</span><span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -bottom-24 left-0 bg-white p-4 rounded-lg shadow-xl text-sm w-72 z-50 border border-blue-100">[3]Wang, Rui, et al. "Empowered or Constrained in Platform Governance?" Social Media + Society, March 15, 2024.</span></sup>',
-                'Limited transparency',
-                'Automated systems <sup className="citation-ref group relative cursor-pointer"><span className="text-blue-600">[3]</span><span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -bottom-24 left-0 bg-white p-4 rounded-lg shadow-xl text-sm w-72 z-50 border border-blue-100">[3]Wang, Rui, et al. "Empowered or Constrained in Platform Governance?" Social Media + Society, March 15, 2024.</span></sup>',
-                'Reduced oversight',
-                '"Freedom of reach" <sup className="citation-ref group relative cursor-pointer"><span className="text-blue-600">[4]</span><span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -bottom-24 left-0 bg-white p-4 rounded-lg shadow-xl text-sm w-72 z-50 border border-blue-100">[4]Musk, Elon. "Interview with X News." X News, March 12, 2023.</span></sup>'
-              ].map((item, index) => (
-                <li key={index} className="flex items-center text-slate-700">
-                  <span className="w-2 h-2 bg-slate-500 rounded-full mr-3"></span>
-                  <span dangerouslySetInnerHTML={{ __html: item }}></span>
-                </li>
-              ))}
+              <li className="flex items-start text-slate-700">
+                <span className="w-2 h-2 bg-slate-500 rounded-full mr-3 mt-2"></span>
+                <div>
+                  <span>Algorithmic filtering</span>
+                  <div className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                    [3]Wang, Rui, et al. "Empowered or Constrained in Platform Governance?" Social Media + Society, March 15, 2024.
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-center text-slate-700">
+                <span className="w-2 h-2 bg-slate-500 rounded-full mr-3"></span>
+                <span>Limited transparency</span>
+              </li>
+              <li className="flex items-start text-slate-700">
+                <span className="w-2 h-2 bg-slate-500 rounded-full mr-3 mt-2"></span>
+                <div>
+                  <span>Automated systems</span>
+                  <div className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                    [3]Wang, Rui, et al. "Empowered or Constrained in Platform Governance?" Social Media + Society, March 15, 2024.
+                  </div>
+                </div>
+              </li>
+              <li className="flex items-center text-slate-700">
+                <span className="w-2 h-2 bg-slate-500 rounded-full mr-3"></span>
+                <span>Reduced oversight</span>
+              </li>
+              <li className="flex items-start text-slate-700">
+                <span className="w-2 h-2 bg-slate-500 rounded-full mr-3 mt-2"></span>
+                <div>
+                  <span>"Freedom of reach"</span>
+                  <div className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200">
+                    [4]Musk, Elon. "Interview with X News." X News, March 12, 2023.
+                  </div>
+                </div>
+              </li>
             </ul>
 
             <div className="bg-slate-100 rounded-lg p-4 space-y-2">
@@ -82,36 +123,11 @@ const ComparisonTable = () => {
 
         {/* Key Insight */}
         <div className="bg-indigo-50 rounded-lg p-4 border border-indigo-100 mb-8">
-          <p className="text-center text-indigo-900 font-medium">
-            A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach 
-            <sup className="citation-ref group relative cursor-pointer">
-              <span className="text-blue-600">[5]</span>
-              <span className="citation-popup opacity-0 group-hover:opacity-100 transition-opacity duration-200 absolute -bottom-24 left-0 bg-white p-4 rounded-lg shadow-xl text-sm w-72 z-50 border border-blue-100">
-                [5]Reuters. "Content Moderation Staff Reduction under Musk." Reuters, December 12, 2023.
-              </span>
-            </sup>
-          </p>
-        </div>
-
-        {/* Citations Section */}
-        <div className="mt-auto pt-4 border-t border-gray-200">
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">References</h3>
-          <div className="grid grid-cols-1 gap-3 text-sm text-gray-600">
-            <p className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200">
-              <span className="text-blue-600 font-semibold">[1]</span> Klonick, Kate. "The New Governors: The People, Rules, and Processes Governing Online Speech." Harvard Law Review, December 15, 2018.
-            </p>
-            <p className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200">
-              <span className="text-blue-600 font-semibold">[2]</span> Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, December 31, 2022.
-            </p>
-            <p className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200">
-              <span className="text-blue-600 font-semibold">[3]</span> Wang, Rui, et al. "Empowered or Constrained in Platform Governance?" Social Media + Society, March 15, 2024.
-            </p>
-            <p className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200">
-              <span className="text-blue-600 font-semibold">[4]</span> Musk, Elon. "Interview with X News." X News, March 12, 2023.
-            </p>
-            <p className="p-2 hover:bg-gray-50 rounded-lg transition-colors duration-200">
-              <span className="text-blue-600 font-semibold">[5]</span> Reuters. "Content Moderation Staff Reduction under Musk." Reuters, December 12, 2023.
-            </p>
+          <div className="text-center text-indigo-900 font-medium flex flex-col items-center">
+            <p>A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach</p>
+            <div className="text-sm text-blue-600 hover:text-blue-800 transition-colors duration-200 mt-2">
+              [5]Reuters. "Content Moderation Staff Reduction under Musk." Reuters, December 12, 2023.
+            </div>
           </div>
         </div>
       </div>

@@ -50,8 +50,8 @@ const PolicyTimeline: React.FC = () => {
     {
       date: "Q3 2024",
       title: "Updated X Terms of Service",
-      description: "The terms governing the platform under X's ownership",
-      impact: "Decreased transparency and accountability"
+      description: "The new terms governing the platform under X's ownership",
+      impact: "Decreased public transparency and accountability"
     }
   ];
 

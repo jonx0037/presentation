@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import TitleSlide from './components/TitleSlide'
+import ResearchQuestions from './components/research-questions'
+import Methodology from './components/methodology'
 import GovernanceParadox from './components/governance-paradox'
 import GovernanceComparison from './components/governance-comparison'
 import ImpactAnalysis from './components/impact-analysis'
@@ -12,14 +14,17 @@ import './styles/main.css'
 
 const App = () => {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [menuOpen, setMenuOpen] = useState(false)
   
   const slides = [
-    <TitleSlide />,
-    <GovernanceParadox />,
-    <GovernanceComparison />,
-    <KeyStatistics />,
-    <ImpactAnalysis />,
-    <ConclusionSummary />
+    { component: <TitleSlide />, title: 'Introduction' },
+    { component: <ResearchQuestions />, title: 'Research Questions' },
+    { component: <Methodology />, title: 'Methodology' },
+    { component: <GovernanceParadox />, title: 'Governance Paradox' },
+    { component: <GovernanceComparison />, title: 'Governance Comparison' },
+    { component: <KeyStatistics />, title: 'Key Statistics' },
+    { component: <ImpactAnalysis />, title: 'Impact Analysis' },
+    { component: <ConclusionSummary />, title: 'Conclusion' }
   ]
 
   const nextSlide = () => {
@@ -30,6 +35,11 @@ const App = () => {
     setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev))
   }
 
+  const goToSlide = (index: number) => {
+    setCurrentSlide(index)
+    setMenuOpen(false)
+  }
+
   // Handle keyboard navigation
   React.useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
@@ -37,6 +47,8 @@ const App = () => {
         nextSlide()
       } else if (event.key === 'ArrowLeft') {
         previousSlide()
+      } else if (event.key === 'Escape') {
+        setMenuOpen(false)
       }
     }
 
@@ -53,6 +65,39 @@ const App = () => {
           style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
         />
       </div>
+
+      {/* Menu button */}
+      <button
+        onClick={() => setMenuOpen(!menuOpen)}
+        className="absolute top-4 left-4 z-50 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-slate-600 font-medium hover:bg-white/90 transition-colors"
+      >
+        {menuOpen ? 'Close Menu' : 'Menu'}
+      </button>
+
+      {/* Slide menu */}
+      {menuOpen && (
+        <div className="absolute inset-0 bg-black/50 z-40 backdrop-blur-sm">
+          <div className="absolute left-0 top-0 h-full w-64 bg-white shadow-lg p-4">
+            <h3 className="text-lg font-semibold mb-4 text-indigo-600">Slides</h3>
+            <ul className="space-y-2">
+              {slides.map((slide, index) => (
+                <li key={index}>
+                  <button
+                    onClick={() => goToSlide(index)}
+                    className={`w-full text-left px-3 py-2 rounded ${
+                      currentSlide === index
+                        ? 'bg-indigo-100 text-indigo-700'
+                        : 'hover:bg-slate-100'
+                    }`}
+                  >
+                    {index + 1}. {slide.title}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
 
       {/* Slide counter */}
       <div className="absolute top-4 right-4 bg-white/80 backdrop-blur-sm px-3 py-1 rounded-full text-slate-600 font-medium">
@@ -79,19 +124,18 @@ const App = () => {
         </button>
       </div>
 
-      {/* Current slide */}
-      <div 
-        className="w-full min-h-screen transition-transform duration-500 ease-in-out"
-        style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-      >
-        <div className="flex min-h-screen">
+      {/* Slides container */}
+      <div className="w-full min-h-screen">
+        <div 
+          className="flex transition-transform duration-500 ease-in-out"
+          style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+        >
           {slides.map((slide, index) => (
             <div 
               key={index}
               className="min-w-full min-h-screen flex-shrink-0"
-              style={{ opacity: currentSlide === index ? 1 : 0.3 }}
             >
-              {slide}
+              {slide.component}
             </div>
           ))}
         </div>

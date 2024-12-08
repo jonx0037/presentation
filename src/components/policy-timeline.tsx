@@ -46,6 +46,12 @@ const PolicyTimeline: React.FC = () => {
       title: "Monetization Integration",
       description: "Tied content visibility to premium features",
       impact: "Created tiered access to platform reach"  
+    },
+    {
+      date: "Q3 2024",
+      title: "Updated X Terms of Service",
+      description: "The terms governing the platform under X's ownership",
+      impact: "Decreased transparency and accountability"
     }
   ];
 

@@ -47,7 +47,8 @@ const PolicyTimeline: React.FC = () => {
       date: "Q2 2024",
       title: "Monetization Integration",
       description: "Tied content visibility to premium features",
-      impact: "Created tiered access to platform reach"  
+      impact: "Created tiered access to platform reach",
+      document: "/src/assets/files/monetization-integration-2024-11-15.pdf"
     },
     {
       date: "Q3 2024",

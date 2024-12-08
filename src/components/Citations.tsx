@@ -1,145 +1,207 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-const Citations = () => {
+interface Citation {
+  type: 'book' | 'article' | 'report' | 'document';
+  citation: string;
+  document?: string;
+}
+
+const Citations: FC = () => {
+  const [activeType, setActiveType] = React.useState<'all' | 'book' | 'article' | 'report' | 'document'>('all');
+
+  // Function to get the correct asset path based on environment
+  const getAssetPath = (filename: string): string => {
+    const base = import.meta.env.PROD ? '/presentation' : '';
+    return `${base}/assets/files/${filename}`;
+  };
+
+  const citations: Citation[] = [
+    {
+      type: 'book',
+      citation: 'Balkin, Jack M. "Old-School/New-School Speech Regulation." Harvard Law Review, vol. 127, no. 8, 2014, pp. 2296-2342.'
+    },
+    {
+      type: 'book',
+      citation: 'Benjamin, Ruha. Race After Technology: Abolitionist Tools for the New Jim Code. Polity, 2019.'
+    },
+    {
+      type: 'book',
+      citation: 'Bratton, Benjamin. The Stack: On Software and Sovereignty. MIT Press, 2015.'
+    },
+    {
+      type: 'book',
+      citation: 'Burgess, Jean, and Nancy K. Baym. Twitter: A Biography. NYU Press, 2020.'
+    },
+    {
+      type: 'article',
+      citation: 'Douek, Evelyn. "Governing Online Speech: From Posts-as-Trumps to Proportionality and Probability." Columbia Law Review, vol. 121, no. 3, 2021, pp. 759-834.'
+    },
+    {
+      type: 'book',
+      citation: 'Gillespie, Tarleton. Custodians of the Internet: Platforms, Content Moderation, and the Hidden Decisions That Shape Social Media. Yale UP, 2018.'
+    },
+    {
+      type: 'book',
+      citation: 'Jaffer, Jameel. The Fight for Privacy: Protecting Dignity, Identity, and Love in the Digital Age. Viking, 2022.'
+    },
+    {
+      type: 'book',
+      citation: 'Kaye, David. Speech Police: The Global Struggle to Govern the Internet. Columbia Global Reports, 2019.'
+    },
+    {
+      type: 'article',
+      citation: 'Klonick, Kate. "The New Governors: The People, Rules, and Processes Governing Online Speech." Harvard Law Review, vol. 131, no. 6, 2018, pp. 1598-1670.'
+    },
+    {
+      type: 'article',
+      citation: 'Musk, Elon. "Interview with X News." X News, March 12, 2023, www.xnews.com/interview-elon-musk.'
+    },
+    {
+      type: 'book',
+      citation: 'Noble, Safiya Umoja. Algorithms of Oppression: How Search Engines Reinforce Racism. NYU Press, 2018.'
+    },
+    {
+      type: 'book',
+      citation: 'Pasquale, Frank. The Black Box Society: The Secret Algorithms That Control Money and Information. Harvard UP, 2015.'
+    },
+    {
+      type: 'article',
+      citation: 'Reuters. "Content Moderation Staff Reduction under Musk." Reuters, December 12, 2023, www.reuters.com/tech.'
+    },
+    {
+      type: 'book',
+      citation: 'Roberts, Sarah T. Behind the Screen: Content Moderation in the Shadows of Social Media. Yale UP, 2019.'
+    },
+    {
+      type: 'book',
+      citation: 'Tufekci, Zeynep. Twitter and Tear Gas: The Power and Fragility of Networked Protest. Yale UP, 2017.'
+    },
+    {
+      type: 'report',
+      citation: 'Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.'
+    },
+    {
+      type: 'document',
+      citation: 'Twitter, Inc. Twitter Terms of Service. August 19, 2021.',
+      document: getAssetPath('Twitter_User_Agreement_EN2021.pdf')
+    },
+    {
+      type: 'book',
+      citation: 'Vaidhyanathan, Siva. Antisocial Media: How Facebook Disconnects Us and Undermines Democracy. Oxford UP, 2018.'
+    },
+    {
+      type: 'article',
+      citation: 'Wang, Rui, et al. "Empowered or Constrained in Platform Governance? An Analysis of Twitter Users Responses to Elon Musks Takeover." Social Media + Society, vol. 10, no. 2, 2024, pp. 1-14.'
+    },
+    {
+      type: 'book',
+      citation: 'Wu, Tim. The Attention Merchants: The Epic Scramble to Get Inside Our Heads. Knopf, 2016.'
+    },
+    {
+      type: 'document',
+      citation: 'X Corp. X Terms of Service. 15 Nov. 2024.',
+      document: getAssetPath('x-terms-of-service-2024-11-15.pdf')
+    },
+    {
+      type: 'document',
+      citation: 'Rocha, Jonathan. The Illusion of Absolute Free Speech: How Twitters Evolution to X Reveals the Paradox of Platform Governance. 2024.',
+      document: getAssetPath('The Illusion of Absolute Free Speech- How Twitter\'s Evolution to X Reveals the Paradox of Platform Governance.pdf')
+    },
+    {
+      type: 'book',
+      citation: 'Zuboff, Shoshana. The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power. Public Affairs, 2019.'
+    }
+  ];
+
+  const filteredCitations = activeType === 'all' 
+    ? citations 
+    : citations.filter(citation => citation.type === activeType);
+
+  const typeCount = {
+    all: citations.length,
+    book: citations.filter(c => c.type === 'book').length,
+    article: citations.filter(c => c.type === 'article').length,
+    report: citations.filter(c => c.type === 'report').length,
+    document: citations.filter(c => c.type === 'document').length,
+  };
+
   return (
-    <div className="slide-container flex items-center justify-center p-8 bg-slate-50">
-      <div className="max-w-4xl w-full">
+    <div className="slide-container min-h-screen bg-gradient-to-b from-slate-50 to-white p-8">
+      <div className="max-w-6xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-indigo-900 mb-8">
           Works Cited
         </h2>
-        
-        <div className="space-y-4 text-sm text-slate-700">
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Balkin, Jack M. "Old-School/New-School Speech Regulation." <em>Harvard Law Review</em>, vol. 127, no. 8, 2014, pp. 2296–2342.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Benjamin, Ruha. <em>Race After Technology: Abolitionist Tools for the New Jim Code</em>. Polity, 2019.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Bratton, Benjamin. <em>The Stack: On Software and Sovereignty</em>. MIT Press, 2015.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Burgess, Jean, and Nancy K. Baym. <em>Twitter: A Biography</em>. NYU Press, 2020.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p id="douek" className="pl-8 -indent-8">
-              Douek, Evelyn. "Governing Online Speech: From 'Posts-as-Trumps' to Proportionality and Probability." <em>Columbia Law Review</em>, vol. 121, no. 3, 2021, pp. 759–834.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Gillespie, Tarleton. <em>Custodians of the Internet: Platforms, Content Moderation, and the Hidden Decisions That Shape Social Media</em>. Yale UP, 2018.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Jaffer, Jameel. <em>The Fight for Privacy: Protecting Dignity, Identity, and Love in the Digital Age</em>. Viking, 2022.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Kaye, David. <em>Speech Police: The Global Struggle to Govern the Internet</em>. Columbia Global Reports, 2019.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p id="klonick" className="pl-8 -indent-8">
-              Klonick, Kate. "The New Governors: The People, Rules, and Processes Governing Online Speech." <em>Harvard Law Review</em>, vol. 131, no. 6, 2018, pp. 1598–1670.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p id="musk-interview" className="pl-8 -indent-8">
-              Musk, Elon. "Interview with X News." <em>X News</em>, March 12, 2023, www.xnews.com/interview-elon-musk.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Noble, Safiya Umoja. <em>Algorithms of Oppression: How Search Engines Reinforce Racism</em>. NYU Press, 2018.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Pasquale, Frank. <em>The Black Box Society: The Secret Algorithms That Control Money and Information</em>. Harvard UP, 2015.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p id="reuters" className="pl-8 -indent-8">
-              Reuters. "Content Moderation Staff Reduction under Musk." <em>Reuters</em>, December 12, 2023, www.reuters.com/tech.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Roberts, Sarah T. <em>Behind the Screen: Content Moderation in the Shadows of Social Media</em>. Yale UP, 2019.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Tufekci, Zeynep. <em>Twitter and Tear Gas: The Power and Fragility of Networked Protest</em>. Yale UP, 2017.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p id="twitter-transparency" className="pl-8 -indent-8">
-              Twitter. "Q4 2022 Transparency Report." <em>Transparency Center</em>, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Twitter, Inc. <em>Twitter Terms of Service</em>. August 19, 2021, help.twitter.com/en/rules-and-policies/twitter-terms-of-service. Accessed December,6, 2024.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Vaidhyanathan, Siva. <em>Antisocial Media: How Facebook Disconnects Us and Undermines Democracy</em>. Oxford UP, 2018.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p id="wang" className="pl-8 -indent-8">
-              Wang, Rui, et al. "Empowered or Constrained in Platform Governance? An Analysis of Twitter Users' Responses to Elon Musk's Takeover." <em>Social Media + Society</em>, vol. 10, no. 2, 2024, pp. 1–14.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Wu, Tim. <em>The Attention Merchants: The Epic Scramble to Get Inside Our Heads</em>. Knopf, 2016.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              X Corp. <em>X Terms of Service</em>. 15 Nov. 2024, x.com/tos. Accessed December 6, 2024.
-            </p>
-          </div>
-          
-          <div className="citation p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow">
-            <p className="pl-8 -indent-8">
-              Zuboff, Shoshana. <em>The Age of Surveillance Capitalism: The Fight for a Human Future at the New Frontier of Power</em>. Public Affairs, 2019.
-            </p>
-          </div>
+
+        {/* Filter Tabs */}
+        <div className="flex justify-center gap-4 mb-8">
+          {(['all', 'book', 'article', 'report', 'document'] as const).map((type) => (
+            <button
+              key={type}
+              onClick={() => setActiveType(type)}
+              className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                activeType === type
+                  ? 'bg-indigo-600 text-white shadow-md'
+                  : 'bg-white text-slate-600 hover:bg-indigo-50'
+              }`}
+            >
+              {type.charAt(0).toUpperCase() + type.slice(1)} ({typeCount[type]})
+            </button>
+          ))}
+        </div>
+
+        {/* Citations Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {filteredCitations.map((citation, index) => (
+            <div
+              key={index}
+              className="citation p-6 bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-200 border border-slate-100"
+            >
+              <div className="flex items-start gap-4">
+                <div className="flex-grow">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className={`px-2 py-1 text-xs rounded-full ${
+                      {
+                        book: 'bg-blue-100 text-blue-700',
+                        article: 'bg-green-100 text-green-700',
+                        report: 'bg-yellow-100 text-yellow-700',
+                        document: 'bg-purple-100 text-purple-700'
+                      }[citation.type]
+                    }`}>
+                      {citation.type}
+                    </span>
+                  </div>
+                  <p className="text-slate-700">
+                    {citation.citation}
+                  </p>
+                  {citation.document && (
+                    <div className="mt-4">
+                      <a
+                        href={citation.document}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200 text-sm group"
+                      >
+                        <svg 
+                          className="w-4 h-4 mr-2 group-hover:animate-bounce" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path 
+                            strokeLinecap="round" 
+                            strokeLinejoin="round" 
+                            strokeWidth={2} 
+                            d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                          />
+                        </svg>
+                        View Document
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

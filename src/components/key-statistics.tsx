@@ -24,7 +24,7 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, trend = null, subtitl
     {subtitle && <p className="text-sm text-slate-500 mt-1">{subtitle}</p>}
     {citation && (
       <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
-        Source: {citation}
+        Source: <span className="citation-hover" data-citation={citation}>citation</span>
       </div>
     )}
   </div>
@@ -94,7 +94,7 @@ const StatisticsDisplay: React.FC = () => {
                   </div>
                 </div>
                 <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
-                  Source: Twitter/X Transparency Reports
+                  Source: <span className="citation-hover" data-citation="Twitter. &quot;Q4 2022 Transparency Report.&quot; Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.">Twitter/X Transparency Reports</span>
                 </div>
               </div>
               
@@ -102,7 +102,7 @@ const StatisticsDisplay: React.FC = () => {
                 title="User Trust Impact"
                 value="67%"
                 subtitle="Users reporting decreased confidence"
-                citation="Wang et al., 2024"
+                citation="Wang, Rui, et al. &quot;Empowered or Constrained in Platform Governance? An Analysis of Twitter Users' Responses to Elon Musk's Takeover.&quot; Social Media + Society, vol. 10, no. 2, 2024, pp. 1–14."
               />
             </div>
           </div>
@@ -115,7 +115,7 @@ const StatisticsDisplay: React.FC = () => {
             suggesting a potential gap in platform governance effectiveness.
           </p>
           <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
-            Analysis based on Reuters (2023) and Wang et al. (2024)
+            Analysis based on <span className="citation-hover" data-citation="Reuters. &quot;Content Moderation Staff Reduction under Musk.&quot; Reuters, December 12, 2023, www.reuters.com/tech.">Reuters (2023)</span> and <span className="citation-hover" data-citation="Wang, Rui, et al. &quot;Empowered or Constrained in Platform Governance? An Analysis of Twitter Users' Responses to Elon Musk's Takeover.&quot; Social Media + Society, vol. 10, no. 2, 2024, pp. 1–14.">Wang et al. (2024)</span>
           </div>
         </div>
       </div>

@@ -20,8 +20,8 @@ const ComparisonTable = () => {
             
             <ul className="space-y-4 mb-8">
               {[
-                'Transparent moderation <sup><a href="#klonick">[1]</a></sup>',
-                'Clear appeal process <sup><a href="#twitter-transparency">[2]</a></sup>',
+                'Transparent moderation <span className="citation-hover" data-citation="Klonick, Kate. &quot;The New Governors: The People, Rules, and Processes Governing Online Speech.&quot; Harvard Law Review, vol. 131, no. 6, 2018, pp. 1598–1670.">[1]</span>',
+                'Clear appeal process <span className="citation-hover" data-citation="Twitter. &quot;Q4 2022 Transparency Report.&quot; Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.">[2]</span>',
                 'Human oversight',
                 'Regular reports',
                 'Community standards'
@@ -54,11 +54,11 @@ const ComparisonTable = () => {
             
             <ul className="space-y-4 mb-8">
               {[
-                'Algorithmic filtering <sup><a href="#wang">[3]</a></sup>',
+                'Algorithmic filtering <span className="citation-hover" data-citation="Wang, Rui, et al. &quot;Empowered or Constrained in Platform Governance? An Analysis of Twitter Users\' Responses to Elon Musk\'s Takeover.&quot; Social Media + Society, vol. 10, no. 2, 2024, pp. 1–14.">[3]</span>',
                 'Limited transparency',
-                'Automated systems <sup><a href="#wang">[3]</a></sup>',
+                'Automated systems <span className="citation-hover" data-citation="Wang, Rui, et al. &quot;Empowered or Constrained in Platform Governance? An Analysis of Twitter Users\' Responses to Elon Musk\'s Takeover.&quot; Social Media + Society, vol. 10, no. 2, 2024, pp. 1–14.">[3]</span>',
                 'Reduced oversight',
-                '"Freedom of reach" <sup><a href="#musk-interview">[4]</a></sup>'
+                '"Freedom of reach" <span className="citation-hover" data-citation="Musk, Elon. &quot;Interview with X News.&quot; X News, March 12, 2023, www.xnews.com/interview-elon-musk.">[4]</span>'
               ].map((item, index) => (
                 <li key={index} className="flex items-center text-slate-700">
                   <span className="w-2 h-2 bg-slate-500 rounded-full mr-3"></span>
@@ -83,7 +83,7 @@ const ComparisonTable = () => {
         {/* Key Insight */}
         <div className="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
           <p className="text-center text-indigo-900 font-medium">
-            A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach <sup><a href="#reuters">[5]</a></sup>
+            A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach <span className="citation-hover" data-citation="Reuters. &quot;Content Moderation Staff Reduction under Musk.&quot; Reuters, December 12, 2023, www.reuters.com/tech.">[5]</span>
           </p>
         </div>
       </div>

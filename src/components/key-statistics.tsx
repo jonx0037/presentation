@@ -32,16 +32,16 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, trend = null, subtitl
 
 const StatisticsDisplay: React.FC = () => {
   return (
-    <div className="slide-container flex items-center justify-center">
-      <div className="slide-content max-w-5xl w-full">
-        <h2 className="text-3xl font-bold text-center text-indigo-900 mb-12">
+    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-2xl font-bold text-center text-indigo-900 mb-8 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
           Key Platform Governance Metrics
         </h2>
 
-        <div className="grid grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
           {/* Moderation Changes */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-indigo-800 border-b border-indigo-100 pb-2">
+            <h3 className="text-xl font-bold text-indigo-800 border-b border-indigo-100 pb-2">
               Moderation Changes
             </h3>
             <div className="grid gap-6">
@@ -71,7 +71,7 @@ const StatisticsDisplay: React.FC = () => {
 
           {/* User Impact */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-indigo-800 border-b border-indigo-100 pb-2">
+            <h3 className="text-xl font-bold text-indigo-800 border-b border-indigo-100 pb-2">
               User Impact Analysis
             </h3>
             <div className="grid gap-6">

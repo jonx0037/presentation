@@ -20,9 +20,9 @@ const MethodCard: React.FC<MethodCardProps> = ({ title, children, citation }) =>
 
 const Methodology = () => {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-8 text-slate-800">
-      <div className="max-w-4xl w-full space-y-8">
-        <h2 className="text-4xl font-bold text-center mb-12 text-indigo-600">
+    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-2xl font-bold text-center text-indigo-600 mb-8 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
           Research Methodology
         </h2>
 

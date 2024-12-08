@@ -65,14 +65,14 @@ const PolicyTimeline: React.FC = () => {
   ];
 
   return (
-    <div className="slide-container flex items-center justify-center p-8">
-      <div className="max-w-6xl w-full space-y-8">
-        <h2 className="text-3xl font-bold text-center text-indigo-900 mb-12">
+    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
+      <div className="max-w-6xl mx-auto">
+        <h2 className="text-2xl font-bold text-center text-indigo-900 mb-8 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
           Platform Policy Evolution Timeline
         </h2>
 
         {/* Timeline Navigation */}
-        <div className="relative">
+        <div className="relative mb-8">
           <div className="absolute left-0 right-0 h-1 bg-indigo-100 top-1/2 transform -translate-y-1/2">
             <div 
               className="h-full bg-indigo-600 transition-all duration-500"
@@ -103,12 +103,12 @@ const PolicyTimeline: React.FC = () => {
             <span className="text-sm font-medium text-indigo-500">
               {policies[activePolicy].date}
             </span>
-            <h3 className="text-2xl font-bold text-indigo-900">
+            <h3 className="text-xl font-bold text-indigo-900">
               {policies[activePolicy].title}
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-slate-700">Description</h4>
               <p className="text-slate-600 bg-slate-50 p-4 rounded-lg">

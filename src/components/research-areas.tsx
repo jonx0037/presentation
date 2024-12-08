@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 interface ResearchArea {
   title: string;
   questions: string[];
+  citation?: string;
 }
 
 const ResearchAreas: React.FC = () => {
@@ -16,7 +17,8 @@ const ResearchAreas: React.FC = () => {
         "Comparative studies of algorithmic moderation",
         "Impact of 'freedom of speech, not freedom of reach' policies",
         "Methodologies for external algorithm auditing"
-      ]
+      ],
+      citation: "Klonick, Kate. \"The New Governors: The People, Rules, and Processes Governing Online Speech.\" Harvard Law Review, vol. 131, no. 6, 2018, pp. 1598–1670."
     },
     {
       title: "User Behavior and Platform Migration",
@@ -25,7 +27,8 @@ const ResearchAreas: React.FC = () => {
         "Content creator adaptation strategies",
         "User migration patterns between platforms",
         "Impact on different user demographics"
-      ]
+      ],
+      citation: "Burgess, Jean, and Nancy K. Baym. Twitter: A Biography. NYU Press, 2020."
     },
     {
       title: "Platform Economics and Content Moderation",
@@ -34,7 +37,8 @@ const ResearchAreas: React.FC = () => {
         "Subscription model effects on governance",
         "Economic impacts of reduced moderation",
         "Hidden costs comparison: algorithmic vs human"
-      ]
+      ],
+      citation: "Gillespie, Tarleton. Custodians of the Internet: Platforms, Content Moderation, and the Hidden Decisions That Shape Social Media. Yale UP, 2018."
     },
     {
       title: "Democratic Discourse and Public Sphere",
@@ -43,7 +47,8 @@ const ResearchAreas: React.FC = () => {
         "Misinformation spread patterns analysis",
         "Impact on electoral discourse",
         "Role of crowd-sourced moderation"
-      ]
+      ],
+      citation: "Douek, Evelyn. \"Governing Online Speech: From 'Posts-as-Trumps' to Proportionality and Probability.\" Columbia Law Review, vol. 121, no. 3, 2021, pp. 759–834."
     },
     {
       title: "Legal and Regulatory Implications",
@@ -52,7 +57,8 @@ const ResearchAreas: React.FC = () => {
         "Legal frameworks for platform accountability",
         "Platform ownership and media regulations",
         "Self-regulation vs government oversight"
-      ]
+      ],
+      citation: "Balkin, Jack M. \"Old-School/New-School Speech Regulation.\" Harvard Law Review, vol. 127, no. 8, 2014, pp. 2296–2342."
     }
   ];
 
@@ -79,7 +85,7 @@ const ResearchAreas: React.FC = () => {
           ))}
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-8 transition-all duration-500">
+        <div className="bg-white rounded-xl shadow-lg p-8 transition-all duration-500 relative group">
           <h3 className="text-2xl font-bold text-indigo-900 mb-6">
             {areas[activeArea].title}
           </h3>
@@ -99,6 +105,14 @@ const ResearchAreas: React.FC = () => {
               </div>
             ))}
           </div>
+
+          {areas[activeArea].citation && (
+            <div className="absolute -bottom-2 left-0 right-0 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="bg-white/90 text-xs text-slate-600 py-2 px-4 rounded-b-xl text-center border-t border-indigo-100">
+                {areas[activeArea].citation}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="mt-8 bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-100">

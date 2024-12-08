@@ -15,7 +15,7 @@ const PolicyTimeline: React.FC = () => {
       date: "August 19, 2021",
       title: "Twitter Terms of Service",
       description: "The terms governing the Twitter platform prior to X's acquisition",
-      impact: "Defined the rules and policies for Twitter users. <span class='citation-hover' data-citation='Twitter, Inc. <em>Twitter Terms of Service</em>. August 19, 2021, help.twitter.com/en/rules-and-policies/twitter-terms-of-service. Accessed December,6, 2024.'>See the full terms</span>"
+      impact: "Defined the rules and policies for Twitter users. See the full terms at <a href='https://help.x.com/en/rules-and-policies' target='_blank' rel='noopener noreferrer' className='text-indigo-600 underline'>help.x.com/en/rules-and-policies</a>"
     },
     {
       date: "January 2023",

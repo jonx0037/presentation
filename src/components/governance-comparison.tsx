@@ -81,10 +81,13 @@ const ComparisonTable = () => {
         </div>
 
         {/* Key Insight */}
-        <div className="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
+        <div className="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-100 relative group">
           <p className="text-center text-indigo-900 font-medium">
             A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach <span className="citation-hover" data-citation="Reuters. &quot;Content Moderation Staff Reduction under Musk.&quot; Reuters, December 12, 2023, www.reuters.com/tech.">[5]</span>
           </p>
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity absolute -bottom-2 left-0 right-0 text-xs text-center text-slate-500 bg-white/90 py-1 rounded">
+            Analysis based on <span className="citation-hover" data-citation="Klonick, Kate. &quot;The New Governors: The People, Rules, and Processes Governing Online Speech.&quot; Harvard Law Review, vol. 131, no. 6, 2018, pp. 1598–1670.">[1]</span> and <span className="citation-hover" data-citation="Wang, Rui, et al. &quot;Empowered or Constrained in Platform Governance? An Analysis of Twitter Users\' Responses to Elon Musk\'s Takeover.&quot; Social Media + Society, vol. 10, no. 2, 2024, pp. 1–14.">[3]</span>
+          </div>
         </div>
       </div>
     </div>

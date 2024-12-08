@@ -2,34 +2,34 @@ import React from 'react';
 
 const ConclusionDisplay: React.FC = () => {
   return (
-    <div className="slide-container flex items-center justify-center">
-      <div className="slide-content max-w-5xl w-full">
-        <h2 className="text-3xl font-bold text-center text-indigo-900 mb-12">
+    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl font-bold text-center text-indigo-900 mb-12 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
           Research Conclusions
         </h2>
 
-        <div className="grid grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {/* Key Findings */}
           <div className="space-y-6">
             <h3 className="text-2xl font-bold text-indigo-800 border-b border-indigo-100 pb-2">
               Key Findings
             </h3>
             <div className="space-y-4">
-              <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-indigo-50 to-white">
+              <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-indigo-50 to-white p-6 rounded-lg">
                 <h4 className="text-lg font-semibold text-indigo-900 mb-2">Platform Ownership Impact</h4>
                 <p className="text-slate-600">
                   Dramatic shift in governance structure and moderation approach, leading to reduced transparency and accountability.
                 </p>
               </div>
 
-              <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-indigo-50 to-white">
+              <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-indigo-50 to-white p-6 rounded-lg">
                 <h4 className="text-lg font-semibold text-indigo-900 mb-2">Algorithmic Control</h4>
                 <p className="text-slate-600">
                   Transition from transparent human moderation to opaque algorithmic filtering systems, affecting content visibility.
                 </p>
               </div>
 
-              <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-indigo-50 to-white">
+              <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-r from-indigo-50 to-white p-6 rounded-lg">
                 <h4 className="text-lg font-semibold text-indigo-900 mb-2">User Empowerment Paradox</h4>
                 <p className="text-slate-600">
                   Despite rhetoric of free speech, evidence shows increased centralized corporate control over user expression.
@@ -43,7 +43,7 @@ const ConclusionDisplay: React.FC = () => {
             <h3 className="text-2xl font-bold text-indigo-800 border-b border-indigo-100 pb-2">
               Future Implications
             </h3>
-            <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-50 p-6">
+            <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-lg">
               <div className="space-y-6">
                 <div>
                   <h4 className="text-lg font-semibold text-indigo-900 mb-3">Regulatory Framework</h4>
@@ -82,10 +82,9 @@ const ConclusionDisplay: React.FC = () => {
         {/* Citation */}
         <div className="mt-8 text-center text-slate-500 text-sm">
           <p>Jonathan Aaron Rocha</p>
-            <p><a href="mailto:jr159@my.tamuct.edu" className="hover:text-indigo-600 transition-colors">jr159@my.tamuct.edu</a></p>
+          <p><a href="mailto:jr159@my.tamuct.edu" className="hover:text-indigo-600 transition-colors">jr159@my.tamuct.edu</a></p>
           <p>ENGL 5374 - Research Methods in Graduate Studies</p>
         </div>
-
       </div>
     </div>
   );

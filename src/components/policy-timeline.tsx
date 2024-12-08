@@ -12,20 +12,26 @@ const PolicyTimeline: React.FC = () => {
 
   const policies: PolicyChange[] = [
     {
+      date: "August 19, 2021",
+      title: "Twitter Terms of Service",
+      description: "The terms governing the Twitter platform prior to X's acquisition",
+      impact: "Defined the rules and policies for Twitter users. See the full terms at <a href='https://help.twitter.com/en/rules-and-policies/twitter-terms-of-service' target='_blank' rel='noopener noreferrer' class='text-indigo-600 underline'>help.twitter.com/en/rules-and-policies/twitter-terms-of-service</a>"
+    },
+    {
       date: "January 2023",
       title: "API Access Policy Modification",
       description: "Restricted researchers' ability to study platform dynamics",
       impact: "Limited external oversight and academic research capabilities"
     },
     {
-      date: "July 2023",
+      date: "July 2023", 
       title: "News Link Presentation Change",
       description: "Removed headlines from shared news links",
       impact: "Affected information distribution and context sharing"
     },
     {
       date: "December 2023",
-      title: "Community Notes Implementation",
+      title: "Community Notes Implementation", 
       description: "Replaced partnerships with fact-checking organizations",
       impact: "Shifted fact-checking responsibility to user community"
     },
@@ -39,7 +45,7 @@ const PolicyTimeline: React.FC = () => {
       date: "Q2 2024",
       title: "Monetization Integration",
       description: "Tied content visibility to premium features",
-      impact: "Created tiered access to platform reach"
+      impact: "Created tiered access to platform reach"  
     }
   ];
 
@@ -96,8 +102,7 @@ const PolicyTimeline: React.FC = () => {
             </div>
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-slate-700">Impact</h4>
-              <p className="text-slate-600 bg-indigo-50 p-4 rounded-lg">
-                {policies[activePolicy].impact}
+              <p className="text-slate-600 bg-indigo-50 p-4 rounded-lg" dangerouslySetInnerHTML={{ __html: policies[activePolicy].impact }}>
               </p>
             </div>
           </div>

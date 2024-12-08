@@ -20,15 +20,15 @@ const ComparisonTable = () => {
             
             <ul className="space-y-4 mb-8">
               {[
-                'Transparent moderation',
-                'Clear appeal process',
+                'Transparent moderation <sup><a href="#klonick">[1]</a></sup>',
+                'Clear appeal process <sup><a href="#twitter-transparency">[2]</a></sup>',
                 'Human oversight',
                 'Regular reports',
                 'Community standards'
               ].map((item, index) => (
                 <li key={index} className="flex items-center text-slate-700">
                   <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
-                  {item}
+                  <span dangerouslySetInnerHTML={{ __html: item }}></span>
                 </li>
               ))}
             </ul>
@@ -54,15 +54,15 @@ const ComparisonTable = () => {
             
             <ul className="space-y-4 mb-8">
               {[
-                'Algorithmic filtering',
+                'Algorithmic filtering <sup><a href="#wang">[3]</a></sup>',
                 'Limited transparency',
-                'Automated systems',
+                'Automated systems <sup><a href="#wang">[3]</a></sup>',
                 'Reduced oversight',
-                '"Freedom of reach"'
+                '"Freedom of reach" <sup><a href="#musk-interview">[4]</a></sup>'
               ].map((item, index) => (
                 <li key={index} className="flex items-center text-slate-700">
                   <span className="w-2 h-2 bg-slate-500 rounded-full mr-3"></span>
-                  {item}
+                  <span dangerouslySetInnerHTML={{ __html: item }}></span>
                 </li>
               ))}
             </ul>
@@ -83,7 +83,7 @@ const ComparisonTable = () => {
         {/* Key Insight */}
         <div className="mt-8 p-4 bg-indigo-50 rounded-lg border border-indigo-100">
           <p className="text-center text-indigo-900 font-medium">
-            A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach
+            A 47.8% decrease in appeal success rate suggests a significant shift in content moderation approach <sup><a href="#reuters">[5]</a></sup>
           </p>
         </div>
       </div>

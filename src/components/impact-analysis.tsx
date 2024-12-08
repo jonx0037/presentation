@@ -97,12 +97,16 @@ const ImpactChart: React.FC = () => {
         <div className="grid grid-cols-3 gap-6">
           {data.map((item, index) => (
             <div key={index} className="card hover:shadow-lg transition-all duration-300">
-              <h3 className="font-medium text-slate-900 mb-2">{item.name}</h3>
+              <h3 className="font-medium text-slate-900 mb-2">
+                {item.name} 
+                {item.name === 'Moderation Staff' && <sup><a href="#reuters">[1]</a></sup>}
+              </h3>
               <p className="text-3xl font-bold mb-2">
                 {item.label.split(' ')[0]}
               </p>
               <p className="text-sm text-slate-600">
                 {item.label.split(' ')[1]}
+                {(item.name === 'Issue Reports' || item.name === 'Appeal Success') && <sup><a href="#twitter-transparency">[2]</a></sup>}
               </p>
             </div>
           ))}
@@ -112,7 +116,7 @@ const ImpactChart: React.FC = () => {
         <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl border border-indigo-100">
           <p className="text-center text-indigo-900 font-medium">
             The data reveals a clear shift in platform governance, marked by reduced human oversight
-            and increased reliance on automated systems, leading to significant changes in moderation outcomes.
+            and increased reliance on automated systems, leading to significant changes in moderation outcomes. <sup><a href="#wang">[3]</a></sup>
           </p>
         </div>
       </div>

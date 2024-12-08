@@ -83,6 +83,51 @@
     @apply text-2xl font-bold text-indigo-600 mb-6
     border-b-2 border-indigo-100 pb-2;
   }
+
+  /* Timeline styles */
+  .timeline-node {
+    @apply w-8 h-8 rounded-full flex items-center justify-center
+    transition-all duration-300 cursor-pointer
+    hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-500;
+  }
+
+  .timeline-node-active {
+    @apply bg-indigo-600 text-white;
+  }
+
+  .timeline-node-inactive {
+    @apply bg-white border-2 border-indigo-200 text-indigo-400;
+  }
+
+  .timeline-line {
+    @apply absolute left-0 right-0 h-1 bg-indigo-100 top-1/2 transform -translate-y-1/2;
+  }
+
+  .timeline-progress {
+    @apply h-full bg-indigo-600 transition-all duration-500;
+  }
+
+  /* Research area styles */
+  .research-area-button {
+    @apply p-4 text-sm font-medium rounded-lg transition-all duration-300
+    hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500;
+  }
+
+  .research-area-button-active {
+    @apply bg-indigo-600 text-white shadow-lg scale-105;
+  }
+
+  .research-question-card {
+    @apply bg-indigo-50 p-4 rounded-lg border border-indigo-100
+    hover:shadow-md transition-all duration-300
+    transform hover:-translate-y-1;
+  }
+
+  .research-number {
+    @apply w-6 h-6 bg-indigo-600 text-white rounded-full
+    flex items-center justify-center flex-shrink-0
+    text-sm font-medium;
+  }
 }
 
 /* Transitions */
@@ -108,6 +153,25 @@
   transition: opacity 300ms, transform 300ms;
 }
 
+/* Slide transitions */
+.slide-right-enter {
+  transform: translateX(100%);
+}
+
+.slide-right-enter-active {
+  transform: translateX(0);
+  transition: transform 500ms ease-in-out;
+}
+
+.slide-right-exit {
+  transform: translateX(0);
+}
+
+.slide-right-exit-active {
+  transform: translateX(-100%);
+  transition: transform 500ms ease-in-out;
+}
+
 /* Animations */
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
@@ -119,6 +183,21 @@
   }
   50% {
     opacity: .5;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 

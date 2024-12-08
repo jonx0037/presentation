@@ -5,8 +5,10 @@ import ResearchQuestions from './components/research-questions'
 import Methodology from './components/methodology'
 import GovernanceParadox from './components/governance-paradox'
 import GovernanceComparison from './components/governance-comparison'
+import PolicyTimeline from './components/policy-timeline'
 import ImpactAnalysis from './components/impact-analysis'
 import KeyStatistics from './components/key-statistics'
+import ResearchAreas from './components/research-areas'
 import ConclusionSummary from './components/conclusion-summary'
 
 // Import Tailwind CSS
@@ -21,9 +23,11 @@ const App = () => {
     { component: <ResearchQuestions />, title: 'Research Questions' },
     { component: <Methodology />, title: 'Methodology' },
     { component: <GovernanceParadox />, title: 'Governance Paradox' },
-    { component: <GovernanceComparison />, title: 'Governance Comparison' },
+    { component: <GovernanceComparison />, title: 'Governance Evolution' },
+    { component: <PolicyTimeline />, title: 'Policy Changes' },
     { component: <KeyStatistics />, title: 'Key Statistics' },
     { component: <ImpactAnalysis />, title: 'Impact Analysis' },
+    { component: <ResearchAreas />, title: 'Future Research' },
     { component: <ConclusionSummary />, title: 'Conclusion' }
   ]
 
@@ -43,7 +47,7 @@ const App = () => {
   // Handle keyboard navigation
   React.useEffect(() => {
     const handleKeyPress = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowRight' || event.key === 'Space') {
+      if (event.key === 'ArrowRight' || event.key === ' ') {
         nextSlide()
       } else if (event.key === 'ArrowLeft') {
         previousSlide()
@@ -61,7 +65,7 @@ const App = () => {
       {/* Progress bar */}
       <div className="absolute top-0 left-0 w-full h-1 bg-slate-200">
         <div 
-          className="h-full bg-indigo-600 transition-all duration-300"
+          className="h-full bg-indigo-600 transition-all duration-500"
           style={{ width: `${((currentSlide + 1) / slides.length) * 100}%` }}
         />
       </div>
@@ -109,7 +113,7 @@ const App = () => {
         <button
           onClick={previousSlide}
           disabled={currentSlide === 0}
-          className="nav-button"
+          className="nav-button disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Previous slide"
         >
           Previous
@@ -117,7 +121,7 @@ const App = () => {
         <button
           onClick={nextSlide}
           disabled={currentSlide === slides.length - 1}
-          className="nav-button"
+          className="nav-button disabled:opacity-50 disabled:cursor-not-allowed"
           aria-label="Next slide"
         >
           Next

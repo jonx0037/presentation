@@ -11,13 +11,19 @@ interface PolicyChange {
 const PolicyTimeline: React.FC = () => {
   const [activePolicy, setActivePolicy] = useState<number>(0);
 
+  // Function to get the correct asset path based on environment
+  const getAssetPath = (filename: string) => {
+    const base = import.meta.env.PROD ? '/presentation' : '';
+    return `${base}/assets/files/${filename}`;
+  };
+
   const policies: PolicyChange[] = [
     {
       date: "August 19, 2021",
       title: "Twitter Terms of Service",
       description: "The terms governing the Twitter platform prior to X's acquisition",
       impact: "Defined the rules and policies for Twitter users",
-      document: "/assets/files/Twitter_User_Agreement_EN2021.pdf"
+      document: getAssetPath('Twitter_User_Agreement_EN2021.pdf')
     },
     {
       date: "January 2023",
@@ -54,7 +60,7 @@ const PolicyTimeline: React.FC = () => {
       title: "Updated X Terms of Service",
       description: "The new terms governing the platform under X's ownership",
       impact: "Decreased public transparency and accountability",
-      document: "/assets/files/x-terms-of-service-2024-11-15.pdf"
+      document: getAssetPath('x-terms-of-service-2024-11-15.pdf')
     }
   ];
 
@@ -124,6 +130,7 @@ const PolicyTimeline: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
+                download
               >
                 <svg 
                   className="w-5 h-5 mr-2 group-hover:animate-bounce" 

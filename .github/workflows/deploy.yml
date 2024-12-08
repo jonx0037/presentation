@@ -32,6 +32,10 @@ jobs:
           BASE_URL: /presentation/
         run: |
           npm run build
+          # Create assets/files directory in dist
+          mkdir -p dist/assets/files
+          # Copy PDF files to dist/assets/files
+          cp src/assets/files/*.pdf dist/assets/files/
           # Fix asset paths in index.html
           sed -i 's|src="/assets/|src="/presentation/assets/|g' dist/index.html
           sed -i 's|href="/assets/|href="/presentation/assets/|g' dist/index.html
@@ -42,6 +46,8 @@ jobs:
           ls -la dist/
           echo "Dist/assets contents:"
           ls -la dist/assets/
+          echo "Dist/assets/files contents:"
+          ls -la dist/assets/files/
           cat dist/index.html
         
       - name: Setup Pages

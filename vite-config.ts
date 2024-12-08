@@ -30,7 +30,13 @@ export default defineConfig({
       output: {
         entryFileNames: `assets/[name].[hash].js`,
         chunkFileNames: `assets/[name].[hash].js`,
-        assetFileNames: `assets/[name].[hash].[ext]`,
+        assetFileNames: (assetInfo) => {
+          // Keep PDF files in a separate directory and preserve their names
+          if (assetInfo.name?.endsWith('.pdf')) {
+            return 'assets/files/[name][extname]';
+          }
+          return 'assets/[name].[hash][extname]';
+        },
         manualChunks: undefined
       }
     },
@@ -63,5 +69,7 @@ export default defineConfig({
   },
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' }
-  }
+  },
+  // Add explicit asset handling for PDFs
+  assetsInclude: ['**/*.pdf']
 })

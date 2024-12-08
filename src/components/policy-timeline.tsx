@@ -17,7 +17,7 @@ const PolicyTimeline: React.FC = () => {
       title: "Twitter Terms of Service",
       description: "The terms governing the Twitter platform prior to X's acquisition",
       impact: "Defined the rules and policies for Twitter users",
-      document: "/src/assets/files/Twitter_User_Agreement_EN2021.pdf"
+      document: "/assets/files/Twitter_User_Agreement_EN2021.pdf"
     },
     {
       date: "January 2023",
@@ -54,7 +54,7 @@ const PolicyTimeline: React.FC = () => {
       title: "Updated X Terms of Service",
       description: "The new terms governing the platform under X's ownership",
       impact: "Decreased public transparency and accountability",
-      document: "/src/assets/files/x-terms-of-service-2024-11-15.pdf"
+      document: "/assets/files/x-terms-of-service-2024-11-15.pdf"
     }
   ];
 

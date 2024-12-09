@@ -4,6 +4,7 @@ interface Citation {
   type: 'book' | 'article' | 'report' | 'document';
   citation: string;
   document?: string;
+  url?: string;
 }
 
 const Citations: FC = () => {
@@ -78,7 +79,9 @@ const Citations: FC = () => {
     },
     {
       type: 'report',
-      citation: 'Twitter. "Q4 2022 Transparency Report." Transparency Center, Twitter, 2022, transparency.twitter.com/en/reports/2022-q4.'
+      citation: 'X Corp. "Global Transparency Report H1 2024." X Transparency Center, 2024.',
+      url: 'https://transparency.x.com/en',
+      document: getAssetPath('x-global-transparency-report-h1-compressed.pdf')
     },
     {
       type: 'document',
@@ -176,8 +179,8 @@ const Citations: FC = () => {
                     <p className="text-slate-700">
                       {citation.citation}
                     </p>
-                    {citation.document && (
-                      <div className="mt-4">
+                    <div className="mt-4 flex gap-2">
+                      {citation.document && (
                         <a
                           href={citation.document}
                           target="_blank"
@@ -199,8 +202,31 @@ const Citations: FC = () => {
                           </svg>
                           View Document
                         </a>
-                      </div>
-                    )}
+                      )}
+                      {citation.url && (
+                        <a
+                          href={citation.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-4 py-2 bg-indigo-50 text-indigo-700 rounded-lg hover:bg-indigo-100 transition-colors duration-200 text-sm group"
+                        >
+                          <svg 
+                            className="w-4 h-4 mr-2" 
+                            fill="none" 
+                            stroke="currentColor" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path 
+                              strokeLinecap="round" 
+                              strokeLinejoin="round" 
+                              strokeWidth={2} 
+                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                            />
+                          </svg>
+                          Visit Website
+                        </a>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>

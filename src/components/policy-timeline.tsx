@@ -6,6 +6,7 @@ interface PolicyChange {
   description: string;
   impact: string;
   document?: string;
+  url?: string;
   citation: string;
   source: {
     type: 'article' | 'report' | 'document';
@@ -44,11 +45,13 @@ const PolicyTimeline: React.FC = () => {
       title: "API Access Policy Modification",
       description: "Restricted researchers' ability to study platform dynamics",
       impact: "Limited external oversight and academic research capabilities",
-      citation: "Wang, Rui, et al. 'Empowered or Constrained in Platform Governance? An Analysis of Twitter Users Responses to Elon Musks Takeover.' Social Media + Society, vol. 10, no. 2, 2024.",
+      url: "https://transparency.x.com/en",
+      document: getAssetPath('x-global-transparency-report-h1-compressed.pdf'),
+      citation: "X Corp. 'Global Transparency Report H1 2024.' X Transparency Center, 2024.",
       source: {
-        type: 'article',
-        author: 'Wang et al.',
-        publication: 'Social Media + Society',
+        type: 'report',
+        author: 'X Corp.',
+        publication: 'X Transparency Center',
         year: '2024'
       }
     },
@@ -57,12 +60,14 @@ const PolicyTimeline: React.FC = () => {
       title: "News Link Presentation Change",
       description: "Removed headlines from shared news links",
       impact: "Affected information distribution and context sharing",
-      citation: "Reuters. 'Content Moderation Staff Reduction under Musk.' Reuters, December 12, 2023.",
+      url: "https://transparency.x.com/en",
+      document: getAssetPath('x-global-transparency-report-h1-compressed.pdf'),
+      citation: "X Corp. 'Global Transparency Report H1 2024.' X Transparency Center, 2024.",
       source: {
-        type: 'article',
-        author: 'Reuters',
-        publication: 'Reuters',
-        year: '2023'
+        type: 'report',
+        author: 'X Corp.',
+        publication: 'X Transparency Center',
+        year: '2024'
       }
     },
     {
@@ -70,12 +75,14 @@ const PolicyTimeline: React.FC = () => {
       title: "Community Notes Implementation", 
       description: "Replaced partnerships with fact-checking organizations",
       impact: "Shifted fact-checking responsibility to user community",
-      citation: "Musk, Elon. 'Interview with X News.' X News, March 12, 2023.",
+      url: "https://transparency.x.com/en",
+      document: getAssetPath('x-global-transparency-report-h1-compressed.pdf'),
+      citation: "X Corp. 'Global Transparency Report H1 2024.' X Transparency Center, 2024.",
       source: {
-        type: 'article',
-        author: 'Musk',
-        publication: 'X News',
-        year: '2023'
+        type: 'report',
+        author: 'X Corp.',
+        publication: 'X Transparency Center',
+        year: '2024'
       }
     },
     {
@@ -203,29 +210,54 @@ const PolicyTimeline: React.FC = () => {
                 Source Citation
               </button>
 
-              {policies[activePolicy].document && (
-                <a
-                  href={policies[activePolicy].document}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
-                >
-                  <svg 
-                    className="w-5 h-5 mr-2 group-hover:animate-bounce" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24"
+              <div className="flex gap-2">
+                {policies[activePolicy].url && (
+                  <a
+                    href={policies[activePolicy].url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
-                    />
-                  </svg>
-                  View Document
-                </a>
-              )}
+                    <svg 
+                      className="w-5 h-5 mr-2" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" 
+                      />
+                    </svg>
+                    Visit Website
+                  </a>
+                )}
+                {policies[activePolicy].document && (
+                  <a
+                    href={policies[activePolicy].document}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
+                  >
+                    <svg 
+                      className="w-5 h-5 mr-2 group-hover:animate-bounce" 
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                      />
+                    </svg>
+                    View Document
+                  </a>
+                )}
+              </div>
             </div>
 
             {showCitation && (

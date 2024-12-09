@@ -6,10 +6,18 @@ interface PolicyChange {
   description: string;
   impact: string;
   document?: string;
+  citation: string;
+  source: {
+    type: 'article' | 'report' | 'document';
+    author: string;
+    publication?: string;
+    year: string;
+  };
 }
 
 const PolicyTimeline: React.FC = () => {
   const [activePolicy, setActivePolicy] = useState<number>(0);
+  const [showCitation, setShowCitation] = useState<boolean>(false);
 
   // Function to get the correct asset path based on environment
   const getAssetPath = (filename: string) => {
@@ -23,44 +31,91 @@ const PolicyTimeline: React.FC = () => {
       title: "Twitter Terms of Service",
       description: "The terms governing the Twitter platform prior to X's acquisition",
       impact: "Defined the rules and policies for Twitter users",
-      document: getAssetPath('Twitter_User_Agreement_EN2021.pdf')
+      document: getAssetPath('Twitter_User_Agreement_EN2021.pdf'),
+      citation: "Twitter, Inc. Twitter Terms of Service. August 19, 2021.",
+      source: {
+        type: 'document',
+        author: 'Twitter, Inc.',
+        year: '2021'
+      }
     },
     {
       date: "January 2023",
       title: "API Access Policy Modification",
       description: "Restricted researchers' ability to study platform dynamics",
-      impact: "Limited external oversight and academic research capabilities"
+      impact: "Limited external oversight and academic research capabilities",
+      citation: "Wang, Rui, et al. 'Empowered or Constrained in Platform Governance? An Analysis of Twitter Users Responses to Elon Musks Takeover.' Social Media + Society, vol. 10, no. 2, 2024.",
+      source: {
+        type: 'article',
+        author: 'Wang et al.',
+        publication: 'Social Media + Society',
+        year: '2024'
+      }
     },
     {
       date: "July 2023", 
       title: "News Link Presentation Change",
       description: "Removed headlines from shared news links",
-      impact: "Affected information distribution and context sharing"
+      impact: "Affected information distribution and context sharing",
+      citation: "Reuters. 'Content Moderation Staff Reduction under Musk.' Reuters, December 12, 2023.",
+      source: {
+        type: 'article',
+        author: 'Reuters',
+        publication: 'Reuters',
+        year: '2023'
+      }
     },
     {
       date: "December 2023",
       title: "Community Notes Implementation", 
       description: "Replaced partnerships with fact-checking organizations",
-      impact: "Shifted fact-checking responsibility to user community"
+      impact: "Shifted fact-checking responsibility to user community",
+      citation: "Musk, Elon. 'Interview with X News.' X News, March 12, 2023.",
+      source: {
+        type: 'article',
+        author: 'Musk',
+        publication: 'X News',
+        year: '2023'
+      }
     },
     {
       date: "Q1 2024",
       title: "Election Content Policy",
       description: "Modified approach to election-related content",
-      impact: "Changed how political discourse is moderated"
+      impact: "Changed how political discourse is moderated",
+      citation: "Rocha, Jonathan. The Illusion of Absolute Free Speech: How Twitter's Evolution to X Reveals the Paradox of Platform Governance. 2024.",
+      document: getAssetPath('The Illusion of Absolute Free Speech- How Twitter\'s Evolution to X Reveals the Paradox of Platform Governance.pdf'),
+      source: {
+        type: 'report',
+        author: 'Rocha',
+        year: '2024'
+      }
     },
     {
       date: "Q2 2024",
       title: "Monetization Integration",
       description: "Tied content visibility to premium features",
       impact: "Created tiered access to platform reach",
+      citation: "Rocha, Jonathan. The Illusion of Absolute Free Speech: How Twitter's Evolution to X Reveals the Paradox of Platform Governance. 2024.",
+      document: getAssetPath('The Illusion of Absolute Free Speech- How Twitter\'s Evolution to X Reveals the Paradox of Platform Governance.pdf'),
+      source: {
+        type: 'report',
+        author: 'Rocha',
+        year: '2024'
+      }
     },
     {
       date: "Q3 2024",
       title: "Updated X Terms of Service",
       description: "The new terms governing the platform under X's ownership",
       impact: "Decreased public transparency and accountability",
-      document: getAssetPath('x-terms-of-service-2024-11-15.pdf')
+      document: getAssetPath('x-terms-of-service-2024-11-15.pdf'),
+      citation: "X Corp. X Terms of Service. 15 Nov. 2024.",
+      source: {
+        type: 'document',
+        author: 'X Corp.',
+        year: '2024'
+      }
     }
   ];
 
@@ -123,32 +178,82 @@ const PolicyTimeline: React.FC = () => {
             </div>
           </div>
 
-          {policies[activePolicy].document && (
-            <div className="mt-6 flex justify-center">
-              <a
-                href={policies[activePolicy].document}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
-                download
+          {/* Citation Section */}
+          <div className="mt-6 border-t border-slate-200 pt-6">
+            <div className="flex items-center justify-between">
+              <button
+                onClick={() => setShowCitation(!showCitation)}
+                className="flex items-center text-indigo-600 hover:text-indigo-700 transition-colors duration-200"
               >
-                <svg 
-                  className="w-5 h-5 mr-2 group-hover:animate-bounce" 
-                  fill="none" 
-                  stroke="currentColor" 
+                <svg
+                  className={`w-5 h-5 mr-2 transition-transform duration-200 ${
+                    showCitation ? 'transform rotate-180' : ''
+                  }`}
+                  fill="none"
+                  stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth={2} 
-                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
                   />
                 </svg>
-                View Full Document
-              </a>
+                Source Citation
+              </button>
+
+              {policies[activePolicy].document && (
+                <a
+                  href={policies[activePolicy].document}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors duration-200 group"
+                >
+                  <svg 
+                    className="w-5 h-5 mr-2 group-hover:animate-bounce" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" 
+                    />
+                  </svg>
+                  View Document
+                </a>
+              )}
             </div>
-          )}
+
+            {showCitation && (
+              <div className="mt-4 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                <div className="flex items-start gap-3">
+                  <span className={`px-2 py-1 text-xs rounded-full ${
+                    {
+                      article: 'bg-green-100 text-green-700',
+                      report: 'bg-yellow-100 text-yellow-700',
+                      document: 'bg-purple-100 text-purple-700'
+                    }[policies[activePolicy].source.type]
+                  }`}>
+                    {policies[activePolicy].source.type}
+                  </span>
+                  <div className="flex-1">
+                    <p className="text-sm text-slate-600">
+                      {policies[activePolicy].citation}
+                    </p>
+                    <p className="text-xs text-slate-500 mt-2">
+                      {policies[activePolicy].source.author}
+                      {policies[activePolicy].source.publication && ` • ${policies[activePolicy].source.publication}`}
+                      {` • ${policies[activePolicy].source.year}`}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="mt-8 bg-gradient-to-r from-indigo-50 to-blue-50 p-6 rounded-xl border border-indigo-100">

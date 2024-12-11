@@ -1,16 +1,3 @@
-import Image1 from '../public/assets/images/image1.jpg';
-import Image2 from '../public/assets/images/image2.jpg';
-import Image3 from '../public/assets/images/image3.jpg';
-
-function Presentation() {
-  return (
-    <div>
-      <img src={Image1} alt="Image 1" style={{ width: '50%', height: 'auto' }} />
-      <img src={Image2} alt="Image 2" style={{ width: '50%', height: 'auto' }} />
-      <img src={Image3} alt="Image 3" style={{ width: '50%', height: 'auto' }} />
-    </div>
-  );
-}
 // Image1Component.js
 import Image1 from '../public/assets/images/Democratic-Platform-Governance.png';
 
@@ -32,6 +19,7 @@ function Image2Component() {
     </div>
   );
 }
+
 // Image3Component.js
 import Image3 from '../public/assets/images/tension-between-free-speech-absolutism-and-practical-moderation.png';
 
@@ -42,7 +30,7 @@ function Image3Component() {
     </div>
   );
 }
-// Presentation.js
+
 // Presentation.js
 import Image1Component from './Image1Component';
 import Image2Component from './Image2Component';

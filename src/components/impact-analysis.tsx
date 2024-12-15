@@ -1,5 +1,6 @@
 import React from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import tensionImage from '@assets/images/tension-between-free-speech-absolutism-and-practical-moderation.png';
 
 interface DataPoint {
   name: string;
@@ -61,7 +62,7 @@ const ImpactChart: React.FC = () => {
         <div className="mb-12">
           <div className="relative rounded-xl overflow-hidden shadow-lg">
             <img 
-              src="/assets/images/tension-between-free-speech-absolutism-and-practical-moderation.png"
+              src={tensionImage}
               alt="Tension Between Free Speech Absolutism and Practical Moderation"
               className="w-full h-auto"
             />
@@ -142,7 +143,7 @@ const ImpactChart: React.FC = () => {
 
         {/* Analysis Summary */}
         <div className="mt-8 p-6 bg-gradient-to-r from-indigo-50 to-blue-50 rounded-xl border border-indigo-100">
-          <p className="text-center text-indigo-900 font-medium">
+          <p className="text-center text-indigo-900 font-medium text-sm pb-4">
             The data reveals a clear shift in platform governance, marked by reduced human oversight
             and increased reliance on automated systems, leading to significant changes in moderation outcomes.
             <sup className="citation-ref group relative cursor-pointer">

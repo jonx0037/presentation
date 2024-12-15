@@ -1,4 +1,5 @@
 import React from 'react';
+import evolutionImage from '@assets/images/evolution-of-platform-governance.png';
 
 interface ParadoxCardProps {
   title: string;
@@ -52,7 +53,7 @@ const ParadoxDisplay = () => {
         <div className="mb-8">
           <div className="relative rounded-lg overflow-hidden shadow-lg">
             <img 
-              src="/assets/images/evolution-of-platform-governance.png"
+              src={evolutionImage}
               alt="Evolution of Platform Governance"
               className="w-full h-auto"
             />

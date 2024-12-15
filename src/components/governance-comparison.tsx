@@ -1,4 +1,5 @@
 import React from 'react';
+import governanceImage from '@assets/images/Democratic-Platform-Governance.png';
 
 const ComparisonTable = () => {
   return (
@@ -11,7 +12,7 @@ const ComparisonTable = () => {
         {/* Added Image Section */}
         <div className="mb-12 flex justify-center">
           <img 
-            src="/assets/images/Democratic-Platform-Governance.png"
+            src={governanceImage}
             alt="Democratic Platform Governance Model"
             className="max-w-full h-auto rounded-lg shadow-lg"
           />

@@ -25,6 +25,9 @@ export default defineConfig({
           if (assetInfo.name?.endsWith('.pdf')) {
             return 'assets/files/[name][extname]';
           }
+          if (assetInfo.name?.match(/\.(png|jpe?g|gif|svg)$/)) {
+            return 'assets/images/[name][extname]';
+          }
           return 'assets/[name].[hash][extname]';
         }
       }
@@ -43,11 +46,12 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
-      'lodash': resolve(__dirname, 'node_modules/lodash-es')
+      'lodash': resolve(__dirname, 'node_modules/lodash-es'),
+      '@assets': resolve(__dirname, 'src/assets')
     }
   },
   server: {
-    port: 5177,
+    port: 3000,
     strictPort: true,
     hmr: {
       overlay: true
@@ -59,5 +63,5 @@ export default defineConfig({
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' }
   },
-  assetsInclude: ['**/*.pdf']
+  assetsInclude: ['**/*.pdf', '**/*.png', '**/*.jpg', '**/*.jpeg', '**/*.gif', '**/*.svg']
 })

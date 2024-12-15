@@ -2,7 +2,7 @@ import React from 'react'
 
 const ResearchQuestions = () => {
   return (
-    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
+    <div className="slide-container relative h-auto min-h-screen pt-16 pb-20 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-bold text-center text-indigo-600 mb-8 sticky top-0 bg-slate-50/90 py-2 backdrop-blur-sm">
           Research Questions

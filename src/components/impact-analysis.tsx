@@ -57,6 +57,20 @@ const ImpactChart: React.FC = () => {
           showing significant changes in moderation approach and effectiveness.
         </p>
 
+        {/* Added Image Section */}
+        <div className="mb-12">
+          <div className="relative rounded-xl overflow-hidden shadow-lg">
+            <img 
+              src="/assets/images/tension-between-free-speech-absolutism-and-practical-moderation.png"
+              alt="Tension Between Free Speech Absolutism and Practical Moderation"
+              className="w-full h-auto"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-sm py-3 px-4">
+              Visualizing the Balance Between Free Speech and Content Moderation
+            </div>
+          </div>
+        </div>
+
         <div className="card p-6 mb-8">
           <ResponsiveContainer width="100%" height={400}>
             <BarChart data={data} margin={{ top: 20, right: 30, left: 20, bottom: 20 }}>

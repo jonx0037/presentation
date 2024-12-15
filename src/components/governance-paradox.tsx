@@ -48,6 +48,20 @@ const ParadoxDisplay = () => {
           The Platform Governance Paradox
         </h2>
 
+        {/* Added Image Section */}
+        <div className="mb-8">
+          <div className="relative rounded-lg overflow-hidden shadow-lg">
+            <img 
+              src="/assets/images/evolution-of-platform-governance.png"
+              alt="Evolution of Platform Governance"
+              className="w-full h-auto"
+            />
+            <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-xs py-2 px-4">
+              Platform Governance Evolution Timeline
+            </div>
+          </div>
+        </div>
+
         <div className="space-y-4">
           <ParadoxCard
             title="Free Speech vs. Control"

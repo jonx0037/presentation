@@ -27,6 +27,11 @@ export default defineConfig({
     assetsDir: 'assets',
     rollupOptions: {
       input: resolve(__dirname, 'index.html'),
+      external: [
+        'lodash',
+        'lodash/*',
+        /^lodash\/.*/
+      ],
       output: {
         entryFileNames: `assets/[name].[hash].js`,
         chunkFileNames: `assets/[name].[hash].js`,
@@ -37,7 +42,10 @@ export default defineConfig({
           }
           return 'assets/[name].[hash][extname]';
         },
-        manualChunks: undefined
+        manualChunks: undefined,
+        globals: {
+          lodash: 'lodash'
+        }
       }
     },
     sourcemap: true,
@@ -54,7 +62,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
+      '@': resolve(__dirname, 'src'),
+      'lodash': resolve(__dirname, 'node_modules/lodash')
     }
   },
   server: {
@@ -65,7 +74,8 @@ export default defineConfig({
     }
   },
   optimizeDeps: {
-    force: true
+    force: true,
+    include: ['lodash', 'lodash/*']
   },
   esbuild: {
     logOverride: { 'this-is-undefined-in-esm': 'silent' }

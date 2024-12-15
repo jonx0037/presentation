@@ -8,6 +8,15 @@ const ComparisonTable = () => {
           Platform Governance Evolution
         </h2>
 
+        {/* Added Image Section */}
+        <div className="mb-12 flex justify-center">
+          <img 
+            src="/assets/images/Democratic-Platform-Governance.png"
+            alt="Democratic Platform Governance Model"
+            className="max-w-full h-auto rounded-lg shadow-lg"
+          />
+        </div>
+
         <div className="grid grid-cols-2 gap-8 mb-8">
           {/* Pre-Musk Twitter */}
           <div className="card hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-blue-50 to-white p-6 rounded-lg">

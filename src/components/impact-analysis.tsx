@@ -47,8 +47,8 @@ const ImpactChart: React.FC = () => {
   };
 
   return (
-    <div className="slide-container flex items-center justify-center">
-      <div className="slide-content max-w-5xl w-full">
+    <div className="slide-container relative h-screen pt-16 pb-20 px-4 overflow-y-auto">
+      <div className="max-w-5xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-indigo-900 mb-6">
           Platform Governance Impact Analysis
         </h2>

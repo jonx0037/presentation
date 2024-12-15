@@ -3,7 +3,7 @@ import governanceImage from '@assets/images/Democratic-Platform-Governance.png';
 
 const ComparisonTable = () => {
   return (
-    <div className="slide-container flex flex-col items-center justify-between min-h-screen p-8">
+    <div className="slide-container relative min-h-screen flex flex-col justify-center items-center px-4">
       <div className="slide-content max-w-6xl w-full">
         <h2 className="text-3xl font-bold text-center text-indigo-900 mb-8">
           Platform Governance Evolution

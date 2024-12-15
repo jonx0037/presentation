@@ -18,19 +18,20 @@
 
 @layer components {
   .slide-container {
-    @apply min-h-screen p-8 transition-all duration-500 ease-in-out relative
+    @apply min-h-screen transition-all duration-500 ease-in-out relative
     md:min-h-screen
-    sm:p-4
-    overflow-y-scroll /* Changed from auto to scroll to ensure scrolling is always available */
+    overflow-y-scroll
     flex flex-col
-    h-screen; /* Added fixed height to ensure scrolling works */
+    pt-16 pb-8 px-8 /* Adjusted padding to ensure content is visible */
+    sm:pt-12 sm:pb-6 sm:px-4; /* Responsive padding for mobile */
   }
 
   .slide-content {
     @apply max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-8
     sm:p-4
     w-full
-    overflow-y-visible; /* Allow content to overflow for scrolling */
+    overflow-y-visible
+    mt-4; /* Added margin top to prevent content from being cut off */
   }
 
   /* Rest of the CSS remains unchanged */

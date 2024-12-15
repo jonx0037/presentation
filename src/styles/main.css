@@ -18,41 +18,42 @@
 
 @layer components {
   .slide-container {
-    @apply min-h-[100dvh] p-8 transition-all duration-500 ease-in-out relative
+    @apply min-h-screen p-8 transition-all duration-500 ease-in-out relative
     md:min-h-screen
-    sm:p-4 /* Reduced padding on mobile */
-    overflow-y-auto /* Enable scrolling at container level */
-    flex flex-col; /* Use flex to ensure proper content flow */
+    sm:p-4
+    overflow-y-scroll /* Changed from auto to scroll to ensure scrolling is always available */
+    flex flex-col
+    h-screen; /* Added fixed height to ensure scrolling works */
   }
 
   .slide-content {
     @apply max-w-6xl mx-auto bg-white rounded-xl shadow-lg p-8
-    sm:p-4 /* Reduced padding on mobile */
-    flex-grow /* Allow content to grow within container */
-    w-full; /* Ensure full width */
+    sm:p-4
+    w-full
+    overflow-y-visible; /* Allow content to overflow for scrolling */
   }
 
+  /* Rest of the CSS remains unchanged */
   .nav-button {
     @apply px-6 py-2 rounded-lg font-medium transition-all duration-200
     disabled:opacity-50 disabled:cursor-not-allowed
     bg-indigo-600 text-white hover:bg-indigo-700
     focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2
-    sm:px-4 sm:py-1.5 /* Smaller buttons on mobile */
-    sticky bottom-4 /* Keep buttons visible */
-    z-10; /* Ensure buttons stay above content */
+    sm:px-4 sm:py-1.5
+    sticky bottom-4
+    z-10;
   }
 
   .card {
     @apply bg-white rounded-xl shadow-md p-6 transition-all duration-200 hover:shadow-lg
-    sm:p-4 /* Reduced padding on mobile */
-    mb-4; /* Add margin bottom for spacing */
+    sm:p-4
+    mb-4;
   }
 
   .gradient-bg {
     @apply bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-800 text-white;
   }
 
-  /* Citation styles */
   .citation-ref {
     @apply inline-block ml-0.5 text-xs font-medium cursor-help;
   }
@@ -62,8 +63,8 @@
     border border-gray-200 text-sm w-72 z-50
     transform -translate-x-1/2 left-1/2
     backdrop-filter backdrop-blur-sm bg-opacity-95
-    sm:w-64 /* Slightly smaller width on mobile */
-    sm:p-3; /* Reduced padding on mobile */
+    sm:w-64
+    sm:p-3;
   }
 
   .citation-ref:hover .citation-popup {
@@ -73,8 +74,8 @@
   .references-section {
     @apply mt-8 pt-6 border-t-2 border-gray-100 
     grid grid-cols-2 gap-6 text-sm text-gray-600
-    sm:grid-cols-1 /* Single column on mobile */
-    sm:gap-4; /* Reduced gap on mobile */
+    sm:grid-cols-1
+    sm:gap-4;
   }
 
   .reference-item {
@@ -85,11 +86,10 @@
     @apply text-blue-600 font-medium mr-2;
   }
 
-  /* Menu styles */
   .slide-menu {
     @apply fixed inset-y-0 left-0 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-50
-    sm:w-full /* Full width on mobile */
-    overflow-y-auto; /* Enable menu scrolling */
+    sm:w-full
+    overflow-y-auto;
   }
 
   .menu-overlay {
@@ -99,14 +99,13 @@
   .menu-item {
     @apply px-4 py-2 hover:bg-indigo-50 rounded-lg transition-colors duration-200
     text-slate-700 hover:text-indigo-700 cursor-pointer
-    sm:py-3; /* Increased touch target on mobile */
+    sm:py-3;
   }
 
   .menu-item-active {
     @apply bg-indigo-100 text-indigo-700;
   }
 
-  /* Academic components */
   .citation {
     @apply text-sm text-slate-600 italic;
   }
@@ -114,37 +113,36 @@
   .research-card {
     @apply bg-white rounded-lg shadow-md p-6 border-l-4 border-indigo-500
     hover:shadow-lg transition-all duration-200
-    sm:p-4 /* Reduced padding on mobile */
-    mb-4; /* Add margin bottom for spacing */
+    sm:p-4
+    mb-4;
   }
 
   .methodology-item {
     @apply bg-white rounded-lg p-4 shadow-sm border border-slate-100
     hover:border-indigo-200 transition-all duration-200
-    mb-4; /* Add margin bottom for spacing */
+    mb-4;
   }
 
   .statistic-card {
     @apply bg-white rounded-xl shadow-lg p-6 border border-slate-100
     hover:border-indigo-200 transition-all duration-200
     transform hover:-translate-y-1
-    sm:p-4 /* Reduced padding on mobile */
-    mb-4; /* Add margin bottom for spacing */
+    sm:p-4
+    mb-4;
   }
 
   .section-header {
     @apply text-2xl font-bold text-indigo-600 mb-6
     border-b-2 border-indigo-100 pb-2
-    sm:text-xl /* Smaller text on mobile */
-    sm:mb-4; /* Reduced margin on mobile */
+    sm:text-xl
+    sm:mb-4;
   }
 
-  /* Timeline styles */
   .timeline-node {
     @apply w-8 h-8 rounded-full flex items-center justify-center
     transition-all duration-300 cursor-pointer
     hover:scale-110 focus:outline-none focus:ring-2 focus:ring-indigo-500
-    sm:w-6 sm:h-6; /* Smaller nodes on mobile */
+    sm:w-6 sm:h-6;
   }
 
   .timeline-node-active {
@@ -163,12 +161,11 @@
     @apply h-full bg-indigo-600 transition-all duration-500;
   }
 
-  /* Research area styles */
   .research-area-button {
     @apply p-4 text-sm font-medium rounded-lg transition-all duration-300
     hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-indigo-500
-    sm:p-2 /* Reduced padding on mobile */
-    mb-2; /* Add margin bottom for spacing */
+    sm:p-2
+    mb-2;
   }
 
   .research-area-button-active {
@@ -179,7 +176,7 @@
     @apply bg-indigo-50 p-4 rounded-lg border border-indigo-100
     hover:shadow-md transition-all duration-300
     transform hover:-translate-y-1
-    mb-4; /* Add margin bottom for spacing */
+    mb-4;
   }
 
   .research-number {
@@ -189,7 +186,6 @@
   }
 }
 
-/* Transitions */
 .fade-enter {
   opacity: 0;
   transform: translateY(20px);
@@ -212,7 +208,6 @@
   transition: opacity 300ms, transform 300ms;
 }
 
-/* Slide transitions */
 .slide-right-enter {
   transform: translateX(100%);
 }
@@ -231,7 +226,6 @@
   transition: transform 500ms ease-in-out;
 }
 
-/* Animations */
 .animate-pulse {
   animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
@@ -260,7 +254,6 @@
   }
 }
 
-/* Print styles */
 @media print {
   .nav-button,
   .slide-menu,
@@ -285,7 +278,6 @@
     border: 1px solid #e2e8f0;
   }
 
-  /* Print-specific citation styles */
   .citation-popup {
     display: none !important;
   }
